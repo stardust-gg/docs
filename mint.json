@@ -49,7 +49,6 @@
             "typescript-sdk/getting-started",
             "typescript-sdk/application",
             "typescript-sdk/wallets",
-            "typescript-sdk/ethers-v5",
             {
               "group": "Ethers v5",
               "pages": [
@@ -65,17 +64,6 @@
             "typescript-sdk/evm",
             "typescript-sdk/imx",
             "typescript-sdk/sui"
-        ]
-      },
-      {
-        "group": "Ethers v5",
-        "pages": [
-          "ethers-v5/getting-started",
-          "ethers-v5/send-transaction",
-          "ethers-v5/sign-message",
-          "ethers-v5/sign-message-unicode",
-          "ethers-v5/sign-transaction",
-          "ethers-v5/sign-typed-data"
         ]
       },
       {
