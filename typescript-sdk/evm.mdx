@@ -1,0 +1,12 @@
+---
+title: "EVM (Without Ethers)"
+---
+
+This extension can be used to get the address or sign without instantiating an ethers signer class.
+
+```typescript ts
+const userEVMAddress = await wallet.evm.getAddress();
+const userEVMPublicKey = await wallet.evm.getPublicKey();
+const rawSignedDigest = await wallet.evm.signRaw('0x010203');
+const eip191signedMessage = await wallet.evm.signMessage('hello world');
+```

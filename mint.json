@@ -18,12 +18,6 @@
     "feedback": {
       "thumbsRating": true
     },
-    "topbarLinks": [
-      {
-        "name": "Stardust Dashboard",
-        "url": "https://dashboard.stardust.gg/login"
-      }
-    ],
     "tabs": [
       {
         "name": "API Reference",
@@ -54,14 +48,25 @@
         "pages": [
             "typescript-sdk/getting-started",
             "typescript-sdk/application",
-            "typescript-sdk/wallets"
+            "typescript-sdk/wallets",
+            "typescript-sdk/ethers-v5",
+            "typescript-sdk/ethers-v6",
+            "typescript-sdk/evm",
+            "typescript-sdk/imx",
+            "typescript-sdk/sui"
+        ]
+      },
+      {
+        "group": "Other SDKs",
+        "pages": [
+            "other-sdks/nethereum",
+            "other-sdks/solana-web3js"
         ]
       },
       {
         "group": "Application Endpoints",
         "pages": [
           "api-reference/application-endpoints/list-applications",
-          "api-reference/application-endpoints/create-an-application",
           "api-reference/application-endpoints/get-an-application",
           "api-reference/application-endpoints/update-an-application",
           "api-reference/application-endpoints/get-application-wallets"
@@ -80,8 +85,7 @@
       {
         "group": "Sign Endpoints",
         "pages": [
-          "api-reference/sign-endpoints/sign-a-message",
-          "api-reference/sign-endpoints/sign-a-transaction"
+          "api-reference/sign-endpoints/sign-a-message"
         ]
       },
       {

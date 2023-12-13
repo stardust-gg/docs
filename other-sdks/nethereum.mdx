@@ -1,0 +1,85 @@
+---
+title: "Nethereum (.NET)"
+---
+
+## Getting Started
+
+The StardustCustodialSDK object is designed to use on per app basis (one apiKey per StardustCustodialSDK object). With that in mind, lets look at how to use this SDK.
+
+### Step 1: Installation
+
+```shell
+dotnet add package Stardust-Custodial-SDK --version 1.0.4
+dotnet restore
+```
+
+### Step 2: Instantiate the Stardust Custodial SDK & Create a Wallet
+
+```aspnet
+// The first four arguments dont impact anything 
+StardustCustodialSDK.StardustCustodialSDK custodialSDK = new StardustCustodialSDK.StardustCustodialSDK(API_KEY, true);
+
+// Create Wallet
+StardustWallet wallet = await custodialSDK.createWallet();
+
+// Save Wallet Id! We will use this to reference in future steps
+string walletId = wallet.id;
+```
+
+### Step 3: Instantiate the Nethereum Web3 Provider
+
+Creates an app to group wallets. Returns StardustApp instance and API key for later authentication.
+
+```aspnet
+using Nethereum.Hex.HexTypes;
+using Nethereum.Util;
+using Nethereum.Web3;
+using StardustCustodialSDK;
+
+const string RPC_ADDRESS = "https://rpc-mumbai.maticvigil.com/";
+const string API_KEY = "YOUR_API_KEY";
+const string WALLET_ID = "YOUR_WALLET_ID"; // replace with wallet id from previous step
+const int chainId = 80001; // mumbai chain id
+
+Web3 web3 = await StardustWeb3.New(API_KEY, RPC_ADDRESS, chainId, WALLET_ID, debug : false, rpcAddressAuthHeader : null);
+```
+
+### Step 4: Sign and Send Transaction
+
+Boom, Tada!
+
+```aspnet
+using System.Text.Json;
+using Nethereum.Hex.HexTypes;
+using Nethereum.Util;
+using Nethereum.Web3;
+using StardustCustodialSDK;
+
+const string RPC_ADDRESS = "https://rpc-mumbai.maticvigil.com/";
+const string API_KEY = "YOUR_API_KEY";
+const string WALLET_ID = "YOUR_WALLET_ID"; // replace with wallet id from previous step
+const int chainId = 80001; // mumbai chain id
+
+Web3 web3 = await StardustWeb3.New(API_KEY, RPC_ADDRESS, chainId, WALLET_ID, debug : false, rpcAddressAuthHeader : null);
+
+var amountToSend = 0.005m; // Replace with the amount to send in ether
+
+var gasPriceGwei = 10; // Replace with your desired gas price in Gwei
+var gasLimit = 21000; // Replace with your desired gas limit
+
+var transactionInput = new Nethereum.RPC.Eth.DTOs.TransactionInput()
+{
+    From = web3.TransactionManager.Account.Address,
+    To = "0x0f571D2625b503BB7C1d2b5655b483a2Fa696fEf",
+    ChainId = new HexBigInteger($"0x{chainId.ToString("X")}"),
+    Value = new HexBigInteger(Web3.Convert.ToWei(amountToSend)),
+    GasPrice = new HexBigInteger(Web3.Convert.ToWei(gasPriceGwei, UnitConversion.EthUnit.Gwei)),
+    Gas = new HexBigInteger(gasLimit)
+};
+
+var signedTransaction = await web3.TransactionManager.SignTransactionAsync(transactionInput);
+Console.WriteLine($"Signed Transaction: {signedTransaction}");
+
+var transaction = await web3.Eth.Transactions.SendRawTransaction.SendRequestAsync(signedTransaction);
+Console.WriteLine($"Transaction Id: : {transaction}");
+```
