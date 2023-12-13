@@ -1,0 +1,15 @@
+---
+title: "Application"
+---
+
+#### Get Application
+
+Retrieves the app that lives under the supplied api key.
+
+```TypeScript TypeScript
+import { StardustCustodialSDK, StardustApp } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
+const app: StardustApp = await sdk.getApp();
+```

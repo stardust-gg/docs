@@ -1,0 +1,33 @@
+---
+title: "Wallets"
+---
+
+#### Creating a Wallet
+
+Creates a custodial wallet in the Stardust servers, and return a StardustWallet object. This wallet object belongs to the app of the API key supplied. 
+
+```TypeScript TypeScript
+import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
+const wallet: StardustWallet = await sdk.createWallet();
+const walletId = wallet.id;
+```
+
+<Warning>You must save this identifier as it is single identifier for accessing all functionality of wallet</Warning>
+
+#### Get a Wallet
+
+Retrieves a StardustWallet instance based on data found in the Stardust servers.
+
+```TypeScript TypeScript
+import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const WALLET_ID = 'your-wallet-id';
+const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
+const wallet: StardustWallet = await sdk.getWallet(WALLET_ID);
+```
+
+<Note>The StardustWallet object is your entry point to obtaining the signers required for your application.</Note>
