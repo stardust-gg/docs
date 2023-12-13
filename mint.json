@@ -60,10 +60,33 @@
                 "ethers-v5/sign-typed-data"
               ]
             },
-            "typescript-sdk/ethers-v6",
+            {
+              "group": "Ethers v6",
+              "pages": [
+                "ethers-v6/getting-started",
+                "ethers-v6/send-transaction",
+                "ethers-v6/sign-message",
+                "ethers-v6/sign-transaction",
+                "ethers-v6/sign-typed-data"
+              ]
+            },
             "typescript-sdk/evm",
-            "typescript-sdk/imx",
-            "typescript-sdk/sui"
+            {
+              "group": "IMX",
+              "pages": [
+                "imx/getting-started",
+                "imx/register-user",
+                "imx/sign-message"
+              ]
+            },
+            {
+              "group": "Sui",
+              "pages": [
+                "sui/getting-started",
+                "sui/sign-personal-message",
+                "sui/sign-transaction-block"
+              ]
+            }
         ]
       },
       {
