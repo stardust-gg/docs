@@ -32,9 +32,9 @@
     ],
     "anchors": [
       {
-        "name": "Payments",
-        "icon": "money-bill",
-        "url": "https://www.stardust.gg/payments"
+        "name": "Dashboard",
+        "icon": "browser",
+        "url": "https://waas.stardust.gg/"
       },
       {
         "name": "Blog",
@@ -92,7 +92,6 @@
       }
     ],
     "footerSocials": {
-      "youtube": "https://www.youtube.com/channel/UC4mEZggHxM6MwwHV6kKq2lA",
       "twitter": "https://twitter.com/Stardust",
       "linkedin": "https://www.linkedin.com/company/stardustplatform/"
     }
