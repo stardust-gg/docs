@@ -54,7 +54,11 @@
               "group": "Ethers v5",
               "pages": [
                 "ethers-v5/getting-started",
-                "ethers-v5/send-transaction"
+                "ethers-v5/send-transaction",
+                "ethers-v5/sign-message",
+                "ethers-v5/sign-message-unicode",
+                "ethers-v5/sign-transaction",
+                "ethers-v5/sign-typed-data"
               ]
             },
             "typescript-sdk/ethers-v6",
@@ -66,8 +70,12 @@
       {
         "group": "Ethers v5",
         "pages": [
-            "ethers-v5/getting-started",
-            "ethers-v5/send-transaction"
+          "ethers-v5/getting-started",
+          "ethers-v5/send-transaction",
+          "ethers-v5/sign-message",
+          "ethers-v5/sign-message-unicode",
+          "ethers-v5/sign-transaction",
+          "ethers-v5/sign-typed-data"
         ]
       },
       {
