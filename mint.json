@@ -50,10 +50,24 @@
             "typescript-sdk/application",
             "typescript-sdk/wallets",
             "typescript-sdk/ethers-v5",
+            {
+              "group": "Ethers v5",
+              "pages": [
+                "ethers-v5/getting-started",
+                "ethers-v5/send-transaction"
+              ]
+            },
             "typescript-sdk/ethers-v6",
             "typescript-sdk/evm",
             "typescript-sdk/imx",
             "typescript-sdk/sui"
+        ]
+      },
+      {
+        "group": "Ethers v5",
+        "pages": [
+            "ethers-v5/getting-started",
+            "ethers-v5/send-transaction"
         ]
       },
       {
