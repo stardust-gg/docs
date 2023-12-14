@@ -110,9 +110,7 @@
         "pages": [
           "api-reference/wallet-endpoints/create-a-wallet",
           "api-reference/wallet-endpoints/get-wallet-address",
-          "api-reference/wallet-endpoints/get-wallet-public-key",
-          "api-reference/wallet-endpoints/get-wallet-by-id",
-          "api-reference/wallet-endpoints/get-wallethistory"
+          "api-reference/wallet-endpoints/get-wallet-by-id"
         ]
       },
       {
