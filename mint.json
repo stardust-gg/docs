@@ -22,6 +22,10 @@
       {
         "name": "API Reference",
         "url": "api-reference"
+      },
+      {
+        "name": "Change Log",
+        "url": "change-log"
       }
     ],
     "anchors": [
@@ -122,6 +126,12 @@
         "group": "Health Check",
         "pages": [
           "api-reference/health-check/get-health"
+        ]
+      },
+      {
+        "group": "Change Log",
+        "pages": [
+          "change-log/200"
         ]
       }
     ],
