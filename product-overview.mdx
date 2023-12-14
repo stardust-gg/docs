@@ -4,11 +4,11 @@ title: "Product Overview"
 
 Stardust Wallets as a Service (WaaS) is a service used to:
 
-<Card title="Create custodial wallets" icon="wallet" iconType="duotone">
+<Card title="Create custodial wallets" icon="wallet" iconType="duotone" href="/typescript-sdk/wallets">
 </Card>
-<Card title="Sign any transaction for the custodial wallet" icon="arrow-right-arrow-left" iconType="duotone">
+<Card title="Sign any transaction for the custodial wallet" icon="arrow-right-arrow-left" iconType="duotone" href="/ethers-v6/sign-message">
 </Card>
-<Card title="Submit the transaction to an Ethers Provider (if leveraging SDK)" icon="share-from-square" iconType="duotone">
+<Card title="Submit the transaction to an Ethers Provider (if leveraging SDK)" icon="share-from-square" iconType="duotone" href="/ethers-v6/send-transaction">
 </Card>
 
 ### What does it do?
@@ -23,18 +23,32 @@ This is where you can create and manage applications. Each application has a uni
 
 ### SDKs
 
-<Card title="Typescript SDK (Recommended)" href="/typerscript-sdk/getting-started">
-  Main SDK for WaaS
-</Card>
+<CardGroup cols={2}>
+    <Card title="Typescript SDK (Recommended)" href="/typerscript-sdk/getting-started">
+    Main SDK for WaaS
+    </Card>
 
-<Card title="Nethereum" href="/other-sdks/nethereum">
-  Built for games leveraging the Nethereum package in .NET
-</Card>
+    <Card title="Nethereum" href="/other-sdks/nethereum">
+    Built for games leveraging the Nethereum package in .NET
+    </Card>
 
-<Card title="Solana Web3.js" href="/other-sdks/web3-js">
-  Solana focused SDK
-</Card>
+    <Card title="Solana Web3.js" href="/other-sdks/web3-js">
+    Solana focused SDK
+    </Card>
 
-<Card title="REST API" href="/api-reference/create-wallet">
-  If your game is using a different language than the options above, leverage our REST API
-</Card>
+    <Card title="REST API" href="/api-reference/create-wallet">
+    If your game is using a different language than the options above, leverage our REST API
+    </Card>
+</CardGroup>
+
+### Chain Support
+<CardGroup cols={2}>
+    <Card title="EVM" href="/ethers-v6/getting-started">
+    </Card>
+    <Card title="IMX" href="/imx/getting-started">
+    </Card>
+    <Card title="Sui" href="/sui/getting-started">
+    </Card>
+    <Card title="Solana" href="/other-sdks/solana-web3js">
+    </Card>
+</CardGroup>
