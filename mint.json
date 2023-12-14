@@ -101,8 +101,7 @@
         "pages": [
           "api-reference/application-endpoints/list-applications",
           "api-reference/application-endpoints/get-an-application",
-          "api-reference/application-endpoints/update-an-application",
-          "api-reference/application-endpoints/get-application-wallets"
+          "api-reference/application-endpoints/update-an-application"
         ]
       },
       {
