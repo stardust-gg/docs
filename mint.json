@@ -131,7 +131,8 @@
       {
         "group": "Change Log",
         "pages": [
-          "change-log/v2"
+          "change-log/v2",
+          "change-log/billing"
         ]
       }
     ],
