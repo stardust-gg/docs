@@ -35,13 +35,13 @@ const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
 const wallet: StardustWallet = await sdk.createWallet(); // this also creates a Profile
 const walletId = wallet.id;
 
-// PLAYER PROMPTED TO ADD SOCIAL
+// PLAYER PROMPTED TO ADD SOCIAL (never get the profile)
 // add specific social
 const social = userInputGoogle;
-profile.id.addGoogle(social);
+wallet.id.addGoogle(social);
 // or generic
 const social = userInput;
-profile.id.add(social);
+wallet.id.add(social);
 ```
 
 ### Profile is created in the background with option to disable:
