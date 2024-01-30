@@ -1,0 +1,70 @@
+---
+title: "Profiles"
+---
+
+Profile is ONLY separate:
+```TypeScript TypeScript
+import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
+const wallet: StardustWallet = await sdk.createWallet();
+const walletId = wallet.id;
+
+// PLAYER PROMPTED TO ADD SOCIAL
+// create profile
+const profile: StardustProfile = await sdk.createProfile();
+
+// add to wallet
+wallet.addProfile(profile);
+
+// add specific social
+const social = userInputGoogle;
+profile.id.addGoogle(social);
+// or generic
+const social = userInput;
+profile.id.add(social);
+```
+
+Profile is created in the background:
+```TypeScript TypeScript
+import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
+const wallet: StardustWallet = await sdk.createWallet(); // this also creates a Profile
+const walletId = wallet.id;
+
+// PLAYER PROMPTED TO ADD SOCIAL
+// add specific social
+const social = userInputGoogle;
+profile.id.addGoogle(social);
+// or generic
+const social = userInput;
+profile.id.add(social);
+```
+
+Profile is created in the background with option to disable:
+```TypeScript TypeScript
+import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
+const wallet: StardustWallet = await sdk.createWallet(createProfile: False);
+const walletId = wallet.id;
+
+// PLAYER PROMPTED TO ADD SOCIAL
+// create profile
+const profile: StardustProfile = await sdk.createProfile();
+
+// add to wallet
+wallet.addProfile(profile);
+
+// add specific social
+const social = userInputGoogle;
+profile.id.addGoogle(social);
+// or generic
+const social = userInput;
+profile.id.add(social);
+```
+
