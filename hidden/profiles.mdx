@@ -42,10 +42,8 @@ const wallet: StardustWallet = await sdk.createWallet();
 const walletId = wallet.id;
 
 // PLAYER PROMPTED TO ADD SOCIAL
-// now create the profile
-const profile: StardustProfile = await sdk.createProfile();
-// add to the wallet
-wallet.addProfile(profile);
+// get default profile
+const profile: StardustProfile = await sdk.getProfile(wallet.profileId);
 
 // add specific social
 const social = userInputGoogle;
