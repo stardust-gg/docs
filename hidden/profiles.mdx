@@ -1,9 +1,39 @@
 ---
 title: "Profiles"
 ---
+## Overview
+### What is a Profile?
+Stardust Profiles enable developers to create a profile for each player, allowing client-side authentication and account linking. This provides more security and flexibility for developers, as well as facilitating analyses like understanding where requests are coming from. Stardust Profiles also lay the groundwork for features like payments, KYC, and cross-device accounts.
 
-### Profile is ONLY separate:
-```TypeScript TypeScript
+### Why use Profiles?
+Using Stardust Profiles provides several benefits. It allows for client-side requests, resulting in a faster experience for players due to fewer server calls. It enhances security by utilizing a token that can only control a specific player. Profiles also offer developers greater flexibility when the code is client-side, making it easier to incorporate custodial into existing non-custodial code. Furthermore, they provide valuable insights for developers, such as the origins of requests and player identities, which can be used for user acquisition strategies. Lastly, Profiles lay the groundwork for client-side specific features like payments, KYC, and cross-device accounts.
+
+## Examples
+
+### Profile Creation Upfront
+If you collect identifying information when a player starts playing your game where a sign up is required, follow this method of creating the profile first.
+
+```TypeScript desktop-example.ts
+import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
+const profile: StardustProfile = await sdk.createProfile();
+const wallet: StardustWallet = await sdk.createWallet(profile);
+const walletId = wallet.id;
+
+// add specific social
+const social = userInputGoogle;
+profile.addGoogle(social);
+// or generic
+const social = userInput;
+profile.addIdentifier(social.service, social.id);
+```
+
+### Anonymous Players
+If a player is anonymous when they start playing the game, we recommend creating a profile later on in the game when they add social information or their external wallet.
+
+```TypeScript anonymous-example.ts
 import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
 
 const STARDUST_API_KEY = 'your-api-key';
@@ -12,59 +42,15 @@ const wallet: StardustWallet = await sdk.createWallet();
 const walletId = wallet.id;
 
 // PLAYER PROMPTED TO ADD SOCIAL
-// create profile
+// now create the profile
 const profile: StardustProfile = await sdk.createProfile();
-
-// add to wallet
+// add to the wallet
 wallet.addProfile(profile);
 
 // add specific social
 const social = userInputGoogle;
-profile.id.addGoogle(social);
+profile.addGoogle(social);
 // or generic
 const social = userInput;
-profile.id.add(social);
+profile.addIdentifier(social.service, social.id);
 ```
-
-### Profile is created in the background:
-```TypeScript TypeScript
-import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
-
-const STARDUST_API_KEY = 'your-api-key';
-const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
-const wallet: StardustWallet = await sdk.createWallet(); // this also creates a Profile
-const walletId = wallet.id;
-
-// PLAYER PROMPTED TO ADD SOCIAL (never get the profile)
-// add specific social
-const social = userInputGoogle;
-wallet.id.addGoogle(social);
-// or generic
-const social = userInput;
-wallet.id.add(social);
-```
-
-### Profile is created in the background with option to disable:
-```TypeScript TypeScript
-import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
-
-const STARDUST_API_KEY = 'your-api-key';
-const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
-const wallet: StardustWallet = await sdk.createWallet(createProfile: False);
-const walletId = wallet.id;
-
-// PLAYER PROMPTED TO ADD SOCIAL
-// create profile
-const profile: StardustProfile = await sdk.createProfile();
-
-// add to wallet
-wallet.addProfile(profile);
-
-// add specific social
-const social = userInputGoogle;
-profile.id.addGoogle(social);
-// or generic
-const social = userInput;
-profile.id.add(social);
-```
-
