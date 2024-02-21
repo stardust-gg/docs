@@ -1,0 +1,38 @@
+---
+title: "Profile Identifiers"
+---
+## Overview
+### What is a Profile Identifier?
+
+### Why use Profile Identifiers?
+
+## Examples
+### Adding identifers to a profile
+```TypeScript profileIdentifier.ts
+import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(apiKey);
+const profile = await sdk.getProfile(profileId); 
+const userInputGoogleId = '<PLACEHOLDER>';
+await profile.addIdentifier(StardustProfileIdentifierService.Google, userInputGoogleId);
+```
+
+#### Currently supported identifers are:
+```TypeScript StardustProfileIdentifierService.ts
+export declare enum StardustProfileIdentifierService {
+    ExternalWallet = "ts-sdk:external-wallet",
+    Discord = "ts-sdk:discord",
+    Apple = "ts-sdk:apple",
+    Google = "ts-sdk:google",
+    Facebook = "ts-sdk:facebook",
+    Twitter = "ts-sdk:twitter",
+    Email = "ts-sdk:email",
+    Phone = "ts-sdk:phone",
+    Custom = "ts-sdk:custom"
+}
+```
+
+
+
+

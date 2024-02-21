@@ -5,6 +5,11 @@
       "dark": "/logo/dark.png",
       "light": "/logo/light.png"
     },
+    "defaultVersion": "v2.2-beta",
+    "versions": [
+      "v2.1",
+      "v2.2-beta"
+    ],
     "favicon": "/favicon.png",
     "colors": {
       "primary": "#5D3DE1",
@@ -50,48 +55,103 @@
       {
         "group": "Typescript SDK",
         "pages": [
-            "typescript-sdk/getting-started",
-            "typescript-sdk/application",
-            "typescript-sdk/wallets",
+            "typescript-sdk/v2.2-beta/getting-started",
+            "typescript-sdk/v2.2-beta/application",
+            "typescript-sdk/v2.2-beta/profiles",
+            "typescript-sdk/v2.2-beta/profile-identifiers",
+            "typescript-sdk/v2.2-beta/wallets",
+            {
+              "group": "Signers",
+              "pages": [
+                "typescript-sdk/v2.2-beta/signers/evm",
+                {
+                  "group": "IMX",
+                  "pages": [
+                    "typescript-sdk/v2.2-beta/signers/imx/getting-started",
+                    "typescript-sdk/v2.2-beta/signers/imx/register-user",
+                    "typescript-sdk/v2.2-beta/signers/imx/sign-message"
+                  ]
+                },
+                {
+                  "group": "Ethers v5",
+                  "pages": [
+                    "typescript-sdk/v2.2-beta/signers/ethers-v5/getting-started",
+                    "typescript-sdk/v2.2-beta/signers/ethers-v5/send-transaction",
+                    "typescript-sdk/v2.2-beta/signers/ethers-v5/sign-message",
+                    "typescript-sdk/v2.2-beta/signers/ethers-v5/sign-message-unicode",
+                    "typescript-sdk/v2.2-beta/signers/ethers-v5/sign-transaction",
+                    "typescript-sdk/v2.2-beta/signers/ethers-v5/sign-typed-data"
+                  ]
+                },
+                {
+                  "group": "Ethers v6",
+                  "pages": [
+                    "typescript-sdk/v2.2-beta/signers/ethers-v6/getting-started",
+                    "typescript-sdk/v2.2-beta/signers/ethers-v6/send-transaction",
+                    "typescript-sdk/v2.2-beta/signers/ethers-v6/sign-message",
+                    "typescript-sdk/v2.2-beta/signers/ethers-v6/sign-transaction",
+                    "typescript-sdk/v2.2-beta/signers/ethers-v6/sign-typed-data"
+                  ]
+                },
+                {
+                  "group": "Sui",
+                  "pages": [
+                    "typescript-sdk/v2.2-beta/signers/sui/getting-started",
+                    "typescript-sdk/v2.2-beta/signers/sui/sign-personal-message",
+                    "typescript-sdk/v2.2-beta/signers/sign-transaction-block"
+                  ]
+                }
+              ]
+            }
+        ],
+        "version": "v2.2-beta"
+      },
+      {
+        "group": "Typescript SDK",
+        "pages": [
+            "typescript-sdk/v2.1/getting-started",
+            "typescript-sdk/v2.1/application",
+            "typescript-sdk/v2.1/wallets",
             {
               "group": "Ethers v5",
               "pages": [
-                "ethers-v5/getting-started",
-                "ethers-v5/send-transaction",
-                "ethers-v5/sign-message",
-                "ethers-v5/sign-message-unicode",
-                "ethers-v5/sign-transaction",
-                "ethers-v5/sign-typed-data"
+                "typescript-sdk/v2.1/ethers-v5/getting-started",
+                "typescript-sdk/v2.1/ethers-v5/send-transaction",
+                "typescript-sdk/v2.1/ethers-v5/sign-message",
+                "typescript-sdk/v2.1/ethers-v5/sign-message-unicode",
+                "typescript-sdk/v2.1/ethers-v5/sign-transaction",
+                "typescript-sdk/v2.1/ethers-v5/sign-typed-data"
               ]
             },
             {
               "group": "Ethers v6",
               "pages": [
-                "ethers-v6/getting-started",
-                "ethers-v6/send-transaction",
-                "ethers-v6/sign-message",
-                "ethers-v6/sign-transaction",
-                "ethers-v6/sign-typed-data"
+                "typescript-sdk/v2.1/ethers-v6/getting-started",
+                "typescript-sdk/v2.1/ethers-v6/send-transaction",
+                "typescript-sdk/v2.1/ethers-v6/sign-message",
+                "typescript-sdk/v2.1/ethers-v6/sign-transaction",
+                "typescript-sdk/v2.1/ethers-v6/sign-typed-data"
               ]
             },
-            "typescript-sdk/evm",
+            "typescript-sdk/v2.1/evm",
             {
               "group": "IMX",
               "pages": [
-                "imx/getting-started",
-                "imx/register-user",
-                "imx/sign-message"
+                "typescript-sdk/v2.1/imx/getting-started",
+                "typescript-sdk/v2.1/imx/register-user",
+                "typescript-sdk/v2.1/imx/sign-message"
               ]
             },
             {
               "group": "Sui",
               "pages": [
-                "sui/getting-started",
-                "sui/sign-personal-message",
-                "sui/sign-transaction-block"
+                "typescript-sdk/v2.1/sui/getting-started",
+                "typescript-sdk/v2.1/sui/sign-personal-message",
+                "typescript-sdk/v2.1/sui/sign-transaction-block"
               ]
             }
-        ]
+        ],
+        "version": "v2.1"
       },
       {
         "group": "Other SDKs",

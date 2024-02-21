@@ -1,0 +1,54 @@
+---
+title: "Wallets"
+---
+
+<Warning>Directly accessing Wallets via getWallet and createWallet is now deprecated and will be removed in a future version. Please use profiles moving forward in order to access wallets</Warning>
+
+
+#### Creating a Wallet
+
+Creates a custodial wallet in the Stardust servers, and return a StardustWallet object. This wallet object belongs to the app of the API key supplied. 
+
+```TypeScript TypeScript
+import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
+const wallet: StardustWallet = await sdk.createWallet();
+const walletId = wallet.id;
+```
+
+<Note>You must save this identifier as it is single identifier for accessing all functionality of wallet</Note>
+
+#### Get a Wallet
+
+Retrieves a StardustWallet instance based on data found in the Stardust servers.
+
+```TypeScript TypeScript
+import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const WALLET_ID = 'your-wallet-id';
+const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
+const wallet: StardustWallet = await sdk.getWallet(WALLET_ID);
+```
+
+<Note>The StardustWallet object is your entry point to obtaining the signers required for your application.</Note>
+
+#### Profiles 
+
+Wallets come with a profileId that can be used to get the profile object associated with the wallet
+
+```TypeScript TypeScript
+import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY= 'your-api-key';
+const WALLET_ID = 'your-wallet-id';
+const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
+const wallet: StardustWallet = await sdk.getWallet(WALLET_ID);
+const profile = await wallet.getProfile();
+```
+You can then use this profile according to [Profile documentation](./profiles)
+
+#### Signing Operations
+Reference our Signing documentation [Signers](./signers/) for more information on how to sign operations. 
