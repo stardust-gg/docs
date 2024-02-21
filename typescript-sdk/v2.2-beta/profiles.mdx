@@ -10,37 +10,33 @@ Using Stardust Profiles provides several benefits. It allows for client-side req
 
 ## Examples
 
+
 ### Default Profile Creation
-By default, creating a wallet will now also create a profile. You can access the `profile` object through the `wallet` object.
+By default, creating a profile will allow you to access identifers such as external wallet linking, google identifiers, and wallet functionality in one.
 
 ```TypeScript profile.ts
-import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
+import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';
 
 const STARDUST_API_KEY = 'your-api-key';
-const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
-const wallet: StardustWallet = await sdk.createWallet(); // also creates profile
-const walletId = wallet.id;
-
-// PLAYER PROMPTED TO ADD SOCIAL
-// add specific social
-const social = userInputGoogle;
-wallet.profile.addGoogle(social);
-// or generic
-const social = userInput;
-wallet.profile.addIdentifier(social.service, social.id);
+const sdk = new StardustCustodialSDK(apiKey);
+const application = await sdk.getApplication();
+const profile = await sdk.createProfile(application.id, 'My Profile Name'); 
+const profileId = profile.id;
 ```
+<Warning>You must save this identifier as it is single identifier for accessing all functionality of wallet</Warning>
 
-### Adding Multiple Wallets to a Profile
-In some cases, you may want to add multiple wallets to a player. This can be helpful if you want to keep different assets in different wallets. In this example, you will retrieve the Profile first and pass it in on wallet creation.
-
-```TypeScript multi-wallet.ts
-import { StardustCustodialSDK, StardustWallet } from '@stardust-gg/stardust-custodial-sdk';
+### Accessing a profile's wallet
+```TypeScript profileWallet.ts
+import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';
 
 const STARDUST_API_KEY = 'your-api-key';
-const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
-// get profile by Player info
-const playerInfo = db.playerInfo
-const profile: StardustProfile = await sdk.getProfile(playerInfo);
-const wallet: StardustWallet = await sdk.createWallet(profile);
-const walletId = wallet.id;
+const sdk = new StardustCustodialSDK(apiKey);
+const profile = await sdk.getProfile(profileId);
+const { wallet } = profile;
 ```
+
+You can then use this wallet according to the [Wallet documentation](./wallets).
+
+
+
+
