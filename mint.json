@@ -121,6 +121,25 @@
         ]
       },
       {
+        "group": "Profile Endpoints",
+        "pages": [
+          "api-reference/profile-endpoints/create-a-profile",
+          "api-reference/profile-endpoints/get-profile",
+          "api-reference/profile-endpoints/list-profiles",
+          "api-reference/profile-endpoints/update-profile",
+          "api-reference/profile-endpoints/authenticate-profile"
+        ]
+      },
+      {
+        "group": "Profile Identifier Endpoints",
+        "pages": [
+          "api-reference/profile-identifier-endpoints/create-identifier",
+          "api-reference/profile-identifier-endpoints/delete-identifier",
+          "api-reference/profile-identifier-endpoints/get-identifier",
+          "api-reference/profile-identifier-endpoints/list-profile-identifiers"
+        ]
+      },
+      {
         "group": "Sign Endpoints",
         "pages": [
           "api-reference/sign-endpoints/sign-a-message"
