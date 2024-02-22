@@ -201,7 +201,7 @@
                 "pages": [
                   "beta-features/signers/sui/getting-started",
                   "beta-features/signers/sui/sign-personal-message",
-                  "beta-features/signers/sign-transaction-block"
+                  "beta-features/signers/sui/sign-transaction-block"
                 ]
               }
             ]
