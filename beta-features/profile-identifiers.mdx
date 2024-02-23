@@ -30,10 +30,22 @@ export declare enum StardustProfileIdentifierService {
     Facebook = "ts-sdk:facebook",
     Twitter = "ts-sdk:twitter",
     Email = "ts-sdk:email",
-    Phone = "ts-sdk:phone",
-    Custom = "ts-sdk:custom"
+    Phone = "ts-sdk:phone"
 }
 ```
+
+### Adding custom identifers to a profile
+```TypeScript profileIdentifier.ts
+import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(apiKey);
+const profile = await sdk.getProfile(profileId); 
+const customServiceName = '<CUSTOM_SERVICE_NAME>';
+const customId = '<PLACEHOLDER>';
+await profile.addCustomIdentifier(customServiceName, customId);
+```
+
 
 
 
