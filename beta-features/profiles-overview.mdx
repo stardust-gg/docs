@@ -4,29 +4,10 @@ title: "Profiles Overview"
 ### What is a Profile?
 Profiles are a new Beta feature for WaaS that help you understand your users and acquire similar players.
 
-A wallet is now part of a profile. Previously, a wallet was created for every player like this:
-``` typescript ts
-// Get Wallet
-const wallet: StardustWallet = await sdk.getWallet(walletId);
+Profile Identifiers give you a place to store information about your players.
 
-// Get V5 Signer
-const signer = wallet.ethers.v5.getSigner().connect(provider);
-```
+A Stardust Wallet is attached to every Profile.
 
-Now, you will access the Wallet from within the Profile:
-``` typescript ts
-// Get Wallet
-const profile = await sdk.getProfile(profileId);
-const { wallet } = profile;
-
-// Get V5 Signer
-const signer = wallet.ethers.v5.getSigner().connect(provider);
-```
-
-And Profile Identifiers can be added to the profile, detailing the player:
-``` typescript ts
-await profile.addIdentifier(StardustProfileIdentifierService.Google, userInputGoogleId);
-```
 
 ### Why use Profiles?
 
@@ -69,6 +50,30 @@ const { wallet } = profile;
 
 You can then use this wallet according to the [Wallet documentation](/typescript-sdk/wallets).
 
+## Migration for Existing Integrations
+A wallet is now part of a profile. Previously, a wallet was created for every player like this:
+``` typescript ts
+// Get Wallet
+const wallet: StardustWallet = await sdk.getWallet(walletId);
 
+// Get V5 Signer
+const signer = wallet.ethers.v5.getSigner().connect(provider);
+```
 
+Now, you will access the Wallet from within the Profile:
+``` typescript ts
+// Get Wallet
+const profile = await sdk.getProfile(profileId);
+const { wallet } = profile;
+
+// Get V5 Signer
+const signer = wallet.ethers.v5.getSigner().connect(provider);
+```
+
+And Profile Identifiers can be added to the profile, detailing the player:
+``` typescript ts
+await profile.addIdentifier(StardustProfileIdentifierService.Google, userInputGoogleId);
+```
+
+The wallet methods will continue to work, but to add identifiers the Profile must be retrieved.
 
