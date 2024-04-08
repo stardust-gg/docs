@@ -98,13 +98,6 @@
         ]
       },
       {
-        "group": "Other SDKs",
-        "pages": [
-            "other-sdks/nethereum",
-            "other-sdks/solana-web3js"
-        ]
-      },
-      {
         "group": "Application Endpoints",
         "pages": [
           "api-reference/application-endpoints/list-applications",
