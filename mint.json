@@ -56,6 +56,13 @@
         "pages": [
             "typescript-sdk/getting-started",
             "typescript-sdk/application",
+            {
+              "group": "Profiles",
+              "pages": [
+                "profiles/profiles-overview",
+                "profiles/profile-identifiers"
+              ]
+            },
             "typescript-sdk/wallets",
             {
               "group": "Ethers v5",
