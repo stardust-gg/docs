@@ -55,8 +55,8 @@
             {
               "group": "Profiles",
               "pages": [
-                "profiles/profiles-overview",
-                "profiles/profile-identifiers"
+                "typescript-sdk/profiles/profiles-overview",
+                "typescript-sdk/profiles/profile-identifiers"
               ]
             },
             "typescript-sdk/wallets",
@@ -99,6 +99,12 @@
                     "typescript-sdk/signers/sui/getting-started",
                     "typescript-sdk/signers/sui/sign-personal-message",
                     "typescript-sdk/signers/sui/sign-transaction-block"
+                  ]
+                },
+                {
+                  "group": "Sol",
+                  "pages": [
+                    "typescript-sdk/signers/sol/getting-started"
                   ]
                 }
               ]

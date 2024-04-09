@@ -1,0 +1,16 @@
+---
+title: "Getting Started"
+---
+
+```typescript ts
+const solStardustSigner = await wallet.sol;
+```
+
+### Stardust Solana Signer methods
+
+```typescript ts
+const userSOLAddress = await solStardustSigner.getAddress();
+const userSOLPublicKey = await solStardustSigner.getPublicKey();
+const rawSignedDigest = await solStardustSigner.signRaw('0x010203');
+const signedMessage = await solStardustSigner.signMessage('hello world');
+```
