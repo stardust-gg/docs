@@ -117,8 +117,8 @@
         "group": "Wallet Endpoints",
         "pages": [
           "api-reference/wallet-endpoints/create-a-wallet",
-          "api-reference/wallet-endpoints/get-wallet-address",
-          "api-reference/wallet-endpoints/get-wallet-by-id"
+          "api-reference/wallet-endpoints/get-wallet-by-id",
+          "api-reference/wallet-endpoints/list-wallets"
         ]
       },
       {
@@ -137,7 +137,10 @@
           "api-reference/profile-identifier-endpoints/create-identifier",
           "api-reference/profile-identifier-endpoints/delete-identifier",
           "api-reference/profile-identifier-endpoints/get-identifier",
-          "api-reference/profile-identifier-endpoints/list-profile-identifiers"
+          "api-reference/profile-identifier-endpoints/list-profile-identifiers",
+          "api-reference/profile-identifier-endpoints/create-external-evm",
+          "api-reference/profile-identifier-endpoints/create-external-solana",
+          "api-reference/profile-identifier-endpoints/create-external-sui"
         ]
       },
       {
@@ -150,6 +153,18 @@
         "group": "Health Check",
         "pages": [
           "api-reference/health-check/get-health"
+        ]
+      },
+      {
+        "group": "Stats",
+        "pages": [
+          "api-reference/stats-endpoints/get-stats"
+        ]
+      },
+      {
+        "group": "Request Logs",
+        "pages": [
+          "api-reference/logs-endpoints/get-request-logs"
         ]
       },
       {
