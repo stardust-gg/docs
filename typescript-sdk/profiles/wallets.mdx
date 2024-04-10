@@ -1,0 +1,17 @@
+---
+title: "Wallets"
+---
+
+<Warning>You must save this identifier as it is the single identifier for accessing all functionality of a wallet</Warning>
+
+### Accessing a profile's wallet
+```TypeScript profileWallet.ts
+import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(apiKey);
+const profile = await sdk.getProfile(profileId);
+const { wallet } = profile;
+```
+
+<Note>The StardustWallet object is your entry point to obtaining the signers required for your application.</Note>

@@ -56,10 +56,10 @@
               "group": "Profiles",
               "pages": [
                 "typescript-sdk/profiles/profiles-overview",
-                "typescript-sdk/profiles/profile-identifiers"
+                "typescript-sdk/profiles/profile-identifiers",
+                "typescript-sdk/profiles/wallets"
               ]
             },
-            "typescript-sdk/wallets",
             {
               "group": "Signers",
               "pages": [
