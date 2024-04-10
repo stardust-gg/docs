@@ -162,18 +162,6 @@
         ]
       },
       {
-        "group": "Stats",
-        "pages": [
-          "api-reference/stats-endpoints/get-stats"
-        ]
-      },
-      {
-        "group": "Request Logs",
-        "pages": [
-          "api-reference/logs-endpoints/get-request-logs"
-        ]
-      },
-      {
         "group": "Change Log",
         "pages": [
           "change-log/v2",
