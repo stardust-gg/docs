@@ -4,16 +4,16 @@ title: "Product Overview"
 
 Stardust Wallets as a Service (WaaS) is a service used to:
 
-<Card title="Create custodial wallets" icon="wallet" iconType="duotone" href="/typescript-sdk/wallets">
+<Card title="Create a player Profile and Wallet" icon="address-card" iconType="duotone" href="/typescript-sdk/profiles/profiles-overview">
 </Card>
-<Card title="Sign any transaction for the custodial wallet" icon="arrow-right-arrow-left" iconType="duotone" href="/ethers-v6/sign-message">
+<Card title="Sign any transaction for the custodial wallet" icon="arrow-right-arrow-left" iconType="duotone" href="/typescript-sdk/signers/ethers-v6/sign-transaction">
 </Card>
-<Card title="Submit the transaction to an Ethers Provider (if leveraging SDK)" icon="share-from-square" iconType="duotone" href="/ethers-v6/send-transaction">
+<Card title="Submit the transaction to a blockchain" icon="share-from-square" iconType="duotone" href="/typescript-sdk/signers/ethers-v6/send-transaction">
 </Card>
 
 ### What does it do?
 
-This service allows developers to create an application and custodial wallet on behalf of their users. This allows an application to make blockchain calls on behalf of users, **without the users even knowing what blockchain is**. This finally gives developers the ability to bring an application to market that interacts with Web3, but appeals to Web2 based users. Developers can finally crack the code on bringing blockchain to the masses.
+This service allows developers to create profiles and custodial wallet on behalf of their users. This allows an application to make blockchain calls on behalf of users, **without the users even knowing what blockchain is**. This finally gives developers the ability to bring an application to market that interacts with Web3, but appeals to Web2 based users. Developers can finally crack the code on bringing blockchain to the masses.
 
 ### Dashboard and API Keys
 
@@ -28,14 +28,6 @@ This is where you can create and manage applications. Each application has a uni
     Main SDK for WaaS
     </Card>
 
-    <Card title="Nethereum" href="/other-sdks/nethereum">
-    Built for games leveraging the Nethereum package in .NET
-    </Card>
-
-    <Card title="Solana Web3.js" href="/other-sdks/solana-web3js">
-    Solana focused SDK
-    </Card>
-
     <Card title="REST API" href="/api-reference/wallet-endpoints/create-a-wallet">
     If your game is using a different language than the options above, leverage our REST API
     </Card>
@@ -43,12 +35,12 @@ This is where you can create and manage applications. Each application has a uni
 
 ### Chain Support
 <CardGroup cols={2}>
-    <Card title="EVM" href="/ethers-v6/getting-started">
+    <Card title="EVM" href="/typescript-sdk/signers/ethers-v6/getting-started">
     </Card>
-    <Card title="IMX" href="/imx/getting-started">
+    <Card title="IMX" href="/typescript-sdk/signers/imx/getting-started">
     </Card>
-    <Card title="Sui" href="/sui/getting-started">
+    <Card title="Sui" href="/typescript-sdk/signers/sui/getting-started">
     </Card>
-    <Card title="Solana" href="/other-sdks/solana-web3js">
+    <Card title="Solana" href="/typescript-sdk/signers/sol/getting-started">
     </Card>
 </CardGroup>

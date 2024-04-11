@@ -1,1 +1,4146 @@
-{"openapi":"3.0.0","paths":{"/v1/application":{"post":{"operationId":"ApplicationsController_create","summary":"Create an Application","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/CreateApplicationDto"}}}},"responses":{"201":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ApplicationReturnDto"}}}},"400":{"description":"Bad request"}},"tags":["Application Endpoints"],"security":[{"jwt-core":[]}]},"get":{"operationId":"ApplicationsController_list","summary":"List Applications","description":"Fetch a paginated list of applications by filters","parameters":[{"name":"start","required":false,"in":"query","description":"Position in list","schema":{"minimum":0,"maximum":2147483647,"format":"int32","nullable":true,"type":"integer"}},{"name":"limit","required":false,"in":"query","description":"Maximum items returned in list","schema":{"minimum":10,"maximum":100,"format":"int32","nullable":true,"type":"integer"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ApplicationListResponse"}}}}},"tags":["Application Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/application/{id}":{"get":{"operationId":"ApplicationsController_readApp","summary":"Get an Application","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ApplicationReturnDto"}}}},"403":{"description":"Not authorized to access this resource"},"404":{"description":"Resource not found!"}},"tags":["Application Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]},"patch":{"operationId":"ApplicationsController_updateAppNoAppId","summary":"Update an Application","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/EditApplicationDto"}}}},"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ApplicationReturnDto"}}}},"403":{"description":"Not authorized to access this resource"},"404":{"description":"Resource not found!"}},"tags":["Application Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/application/{id}/wallets":{"get":{"operationId":"ApplicationsController_getWallets","summary":"","description":"Deprecated. Please use List Wallets with the `applicationId` parameter.","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}},{"name":"page","required":true,"in":"query","schema":{"type":"number"}},{"name":"limit","required":true,"in":"query","schema":{"type":"number"}}],"responses":{"200":{"description":""}},"tags":["Application Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/plan":{"get":{"operationId":"PlanController_list","summary":"List Plans","description":"Fetch a paginated list of plan records by filters","parameters":[{"name":"start","required":false,"in":"query","description":"Position in list","schema":{"minimum":0,"maximum":2147483647,"format":"int32","nullable":true,"type":"integer"}},{"name":"limit","required":false,"in":"query","description":"Maximum items returned in list","schema":{"minimum":10,"maximum":100,"format":"int32","nullable":true,"type":"integer"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PaginatedPlanResponse"}}}}},"tags":["Plan Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]},"post":{"operationId":"PlanController_create","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PlanCreateRequest"}}}},"responses":{"201":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Plan"}}}}},"tags":["Plan Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/plan/{id}":{"put":{"operationId":"PlanController_update","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PlanUpdateRequest"}}}},"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PlanResponse"}}}},"403":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}},"tags":["Plan Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/subscription/manage":{"get":{"operationId":"SubscriptionController_manage","parameters":[],"responses":{"200":{"description":""}},"tags":["Subscription Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/subscription/{id}":{"get":{"operationId":"SubscriptionController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":""},"403":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}},"tags":["Subscription Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/subscription":{"get":{"operationId":"SubscriptionController_list","summary":"List Subscriptions","description":"Fetch a paginated list of subscription records by filters","parameters":[{"name":"start","required":false,"in":"query","description":"Position in list","schema":{"minimum":0,"maximum":2147483647,"format":"int32","nullable":true,"type":"integer"}},{"name":"limit","required":false,"in":"query","description":"Maximum items returned in list","schema":{"minimum":10,"maximum":100,"format":"int32","nullable":true,"type":"integer"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PaginatedSubscriptionResponse"}}}}},"tags":["Subscription Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]},"post":{"operationId":"SubscriptionController_upsert","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SubscriptionCheckoutRequest"}}}},"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SubscriptionCheckoutResponse"}}}}},"tags":["Subscription Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/stripe/webhook":{"post":{"operationId":"StripeController_webhook","parameters":[],"responses":{"200":{"description":""}},"tags":["Stripe Endpoints"]}},"/v1/wallet":{"post":{"operationId":"WalletsController_create","summary":"Create a wallet","parameters":[],"responses":{"201":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/WalletReturnDto"}}}}},"tags":["Wallet Endpoints"],"security":[{"api-key":[]}]},"get":{"operationId":"WalletsController_list","summary":"List Wallets","description":"Fetch a paginated list of wallet records by filters","parameters":[{"name":"start","required":false,"in":"query","description":"Position in list","schema":{"minimum":0,"maximum":2147483647,"format":"int32","nullable":true,"type":"integer"}},{"name":"limit","required":false,"in":"query","description":"Maximum items returned in list","schema":{"minimum":10,"maximum":100,"format":"int32","nullable":true,"type":"integer"}},{"name":"applicationId","required":false,"in":"query","schema":{"nullable":true,"type":"string"}},{"name":"profileId","required":false,"in":"query","schema":{"nullable":true,"type":"string"}},{"name":"expand","required":false,"in":"query","schema":{"nullable":true,"type":"array","items":{"type":"string","enum":["profile"]}}},{"name":"includeAddresses","required":false,"in":"query","schema":{"nullable":true,"type":"array","items":{"type":"string","enum":["evm","sol","sui"]}}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PaginatedWalletResponse"}}}}},"tags":["Wallet Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/wallet/address":{"get":{"operationId":"WalletsController_getAddress","summary":"Get Wallet Address","description":"Deprecated. Please use Get Wallet by ID with the `includeAddresses` parameter.","parameters":[{"name":"walletId","required":true,"in":"query","description":"Wallet UUID for operation","example":"1","schema":{"type":"string"}},{"name":"chainType","required":true,"in":"query","description":"Chain paradigm for operation","example":"EVM","schema":{"type":"string"}},{"name":"chainId","required":false,"in":"query","description":"[deprecated] evm chain id for operation","example":"1","schema":{"type":"string"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/WalletAddressReturnDto"}}}}},"tags":["Wallet Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/wallet/public-key":{"get":{"operationId":"WalletsController_getPublicKey","summary":"Get Wallet Public Key","parameters":[{"name":"walletId","required":true,"in":"query","description":"Wallet UUID for operation","example":"1","schema":{"type":"string"}},{"name":"chainType","required":true,"in":"query","description":"Chain paradigm for operation","example":"EVM","schema":{"type":"string"}},{"name":"chainId","required":false,"in":"query","description":"[deprecated] evm chain id for operation","example":"1","schema":{"type":"string"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/WalletPublicKeyReturnDto"}}}}},"tags":["Wallet Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/wallet/{walletId}":{"get":{"operationId":"WalletsController_get","summary":"Get Wallet by ID","parameters":[{"name":"walletId","required":true,"in":"path","schema":{"type":"string"}},{"name":"expand","required":false,"in":"query","schema":{"nullable":true,"type":"array","items":{"type":"string","enum":["profile"]}}},{"name":"includeAddresses","required":false,"in":"query","schema":{"nullable":true,"type":"array","items":{"type":"string","enum":["evm","sol","sui"]}}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/WalletResponse"}}}}},"tags":["Wallet Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/wallet/history/{walletId}":{"get":{"operationId":"WalletsController_getWallets","parameters":[{"name":"walletId","required":true,"in":"path","schema":{"type":"string"}},{"name":"page","required":true,"in":"query","schema":{"type":"number"}},{"name":"limit","required":true,"in":"query","schema":{"type":"number"}}],"responses":{"200":{"description":""}},"tags":["Wallet Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/usage":{"get":{"operationId":"UsageController_list","summary":"List Usages","description":"Fetch a paginated list of usage records by filters","parameters":[{"name":"start","required":false,"in":"query","description":"Position in list","schema":{"minimum":0,"maximum":2147483647,"format":"int32","nullable":true,"type":"integer"}},{"name":"limit","required":false,"in":"query","description":"Maximum items returned in list","schema":{"minimum":10,"maximum":100,"format":"int32","nullable":true,"type":"integer"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PaginatedUsageResponse"}}}}},"tags":["Usage Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/profile/identifier/{id}":{"get":{"operationId":"ProfileIdentifierController_get","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ProfileIdentifierResponse"}}}},"403":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}},"tags":["Profile Identifier Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]},"delete":{"operationId":"ProfileIdentifierController_delete","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"204":{"description":""},"403":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}},"tags":["Profile Identifier Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/profile/identifier":{"get":{"operationId":"ProfileIdentifierController_list","summary":"List Profile Identifiers","description":"Fetch a paginated list of profile identifier records by filters","parameters":[{"name":"start","required":false,"in":"query","description":"Position in list","schema":{"minimum":0,"maximum":2147483647,"format":"int32","nullable":true,"type":"integer"}},{"name":"limit","required":false,"in":"query","description":"Maximum items returned in list","schema":{"minimum":10,"maximum":100,"format":"int32","nullable":true,"type":"integer"}},{"name":"profileId","required":false,"in":"query","schema":{"nullable":true,"type":"string"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PaginatedProfileResponse"}}}}},"tags":["Profile Identifier Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]},"post":{"operationId":"ProfileIdentifierController_create","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/ProfileIdentifierCreateRequest"}}}},"responses":{"201":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ProfileIdentifierResponse"}}}}},"tags":["Profile Identifier Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/profile/{id}":{"get":{"operationId":"ProfileController_get","parameters":[{"name":"expand","required":false,"in":"query","schema":{"nullable":true,"type":"array","items":{"type":"string","enum":["identifiers","wallets"]}}},{"name":"includeAddresses","required":false,"in":"query","schema":{"nullable":true,"type":"array","items":{"type":"string","enum":["evm","sol","sui"]}}},{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ProfileResponse"}}}},"403":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}},"tags":["Profile Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]},"put":{"operationId":"ProfileController_update","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/ProfileUpdateRequest"}}}},"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ProfileResponse"}}}},"403":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}},"tags":["Profile Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/profile":{"get":{"operationId":"ProfileController_list","summary":"List Profiles","description":"Fetch a paginated list of profile records by filters","parameters":[{"name":"start","required":false,"in":"query","description":"Position in list","schema":{"minimum":0,"maximum":2147483647,"format":"int32","nullable":true,"type":"integer"}},{"name":"limit","required":false,"in":"query","description":"Maximum items returned in list","schema":{"minimum":10,"maximum":100,"format":"int32","nullable":true,"type":"integer"}},{"name":"applicationId","required":false,"in":"query","schema":{"nullable":true,"type":"string"}},{"name":"expand","required":false,"in":"query","schema":{"nullable":true,"type":"array","items":{"type":"string","enum":["identifiers","wallets"]}}},{"name":"includeAddresses","required":false,"in":"query","schema":{"nullable":true,"type":"array","items":{"type":"string","enum":["evm","sol","sui"]}}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PaginatedProfileResponse"}}}}},"tags":["Profile Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]},"post":{"operationId":"ProfileController_create","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/ProfileCreateRequest"}}}},"responses":{"201":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ProfileResponse"}}}}},"tags":["Profile Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/profile/{id}/authenticate":{"post":{"operationId":"ProfileController_authenticate","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/ProfileAuthenticateRequest"}}}},"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/JWTResponse"}}}},"403":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}},"tags":["Profile Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/sign/message":{"post":{"operationId":"SignController_signMessage","summary":"Sign a Message","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SignRequestDto"}}}},"responses":{"201":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SignResponseDto"}}}}},"tags":["Sign Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/sign/transaction":{"post":{"operationId":"SignController_signTransaction","summary":"Sign a Transaction","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SignRequestDto"}}}},"responses":{"201":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SignResponseDto"}}}}},"tags":["Sign Endpoints"],"security":[{"api-key":[]},{"jwt-core":[]}]}},"/v1/health":{"get":{"operationId":"HealthController_check","summary":"Get Health","description":"Get system health info","parameters":[],"responses":{"200":{"description":"The Health Check is successful","content":{"application/json":{"schema":{"type":"object","properties":{"status":{"type":"string","example":"ok"},"info":{"type":"object","example":{"database":{"status":"up"}},"additionalProperties":{"type":"object","required":["status"],"properties":{"status":{"type":"string"}},"additionalProperties":true},"nullable":true},"error":{"type":"object","example":{},"additionalProperties":{"type":"object","required":["status"],"properties":{"status":{"type":"string"}},"additionalProperties":true},"nullable":true},"details":{"type":"object","example":{"database":{"status":"up"}},"additionalProperties":{"type":"object","required":["status"],"properties":{"status":{"type":"string"}},"additionalProperties":true}}}}}}},"503":{"description":"The Health Check is not successful","content":{"application/json":{"schema":{"type":"object","properties":{"status":{"type":"string","example":"error"},"info":{"type":"object","example":{"database":{"status":"up"}},"additionalProperties":{"type":"object","required":["status"],"properties":{"status":{"type":"string"}},"additionalProperties":true},"nullable":true},"error":{"type":"object","example":{"redis":{"status":"down","message":"Could not connect"}},"additionalProperties":{"type":"object","required":["status"],"properties":{"status":{"type":"string"}},"additionalProperties":true},"nullable":true},"details":{"type":"object","example":{"database":{"status":"up"},"redis":{"status":"down","message":"Could not connect"}},"additionalProperties":{"type":"object","required":["status"],"properties":{"status":{"type":"string"}},"additionalProperties":true}}}}}}}},"tags":["Health Check"]}}},"x-readme":{"proxy-enabled":false},"info":{"title":"Stardust API","description":"","version":"v1","contact":{}},"tags":[],"servers":[{"url":"https://custodial-wallet.stardust.gg","description":"WaaS API"}],"components":{"securitySchemes":{"jwt-core":{"type":"apiKey","in":"header","name":"Authorization"},"api-key":{"type":"apiKey","in":"header","name":"x-api-key"}},"schemas":{"CreateApplicationDto":{"type":"object","properties":{"name":{"type":"string","description":"The name of the application"},"email":{"type":"string","description":"The email address associated with this app"},"description":{"type":"string","description":"The description of the application"}},"required":["name","email"]},"ApplicationReturnDto":{"type":"object","properties":{"id":{"type":"string","description":"The id of the application"},"name":{"type":"string","description":"The name of the application"},"email":{"type":"string","description":"The email address associated with this app"},"description":{"type":"string","description":"The description of the application"},"apiKey":{"type":"string","description":"The API keys associated with the application"}},"required":["id","name","email"]},"ApplicationListResponse":{"type":"object","properties":{"results":{"description":"The results returned","type":"array","items":{"$ref":"#/components/schemas/ApplicationReturnDto"}},"total":{"type":"number","description":"The total number of items in the filter"},"start":{"type":"number","description":"The requested start"},"limit":{"type":"number","description":"The requested limit"},"filter":{"type":"object","description":"The requested filter"}},"required":["results","total","start","limit","filter"]},"EditApplicationDto":{"type":"object","properties":{"name":{"type":"string","description":"The name of the application"},"email":{"type":"string","description":"The email address associated with this app"},"description":{"type":"string","description":"The description of the application"}}},"PlanLimit":{"type":"object","properties":{"hard":{"type":"integer","format":"int32","minimum":1,"nullable":true},"soft":{"type":"integer","format":"int32","minimum":1,"nullable":true}}},"PlanLimits":{"type":"object","properties":{"walletCreate":{"$ref":"#/components/schemas/PlanLimit"}},"required":["walletCreate"]},"PlanPrice":{"type":"object","properties":{"amount":{"type":"integer","format":"int32"},"stripeId":{"type":"string"}},"required":["amount","stripeId"]},"PlanPriceList":{"type":"object","properties":{"base":{"$ref":"#/components/schemas/PlanPrice"},"wallet":{"$ref":"#/components/schemas/PlanPrice"}},"required":["base","wallet"]},"PlanConfig":{"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"limits":{"$ref":"#/components/schemas/PlanLimits"},"priceList":{"$ref":"#/components/schemas/PlanPriceList"},"period":{"type":"string","enum":["month"]},"selfServe":{"type":"boolean"},"allowedUpgrades":{"type":"array","items":{"type":"string"}},"features":{"type":"array","items":{"type":"string"}}},"required":["name","description","limits","priceList","period","selfServe","allowedUpgrades","features"]},"PlanResponse":{"type":"object","properties":{"config":{"$ref":"#/components/schemas/PlanConfig"},"active":{"type":"boolean"},"id":{"type":"string"}},"required":["config","active","id"]},"PaginatedPlanResponse":{"type":"object","properties":{"results":{"description":"The results returned","type":"array","items":{"$ref":"#/components/schemas/PlanResponse"}},"total":{"type":"number","description":"The total number of items in the filter"},"start":{"type":"number","description":"The requested start"},"limit":{"type":"number","description":"The requested limit"},"filter":{"type":"object","description":"The requested filter"}},"required":["results","total","start","limit","filter"]},"PlanCreateRequest":{"type":"object","properties":{"active":{"type":"boolean"},"config":{"$ref":"#/components/schemas/PlanConfig"}},"required":["active","config"]},"Plan":{"type":"object","properties":{"config":{"$ref":"#/components/schemas/PlanConfig"},"active":{"type":"boolean"},"id":{"type":"string"}},"required":["config","active","id"]},"PlanUpdateRequest":{"type":"object","properties":{"config":{"$ref":"#/components/schemas/PlanConfig"},"active":{"type":"boolean"}},"required":["config","active"]},"ErrorResponse":{"type":"object","properties":{"message":{"type":"string"}}},"SubscriptionResponse":{"type":"object","properties":{"stripeId":{"type":"string"},"rootUserId":{"type":"string"},"planSnapshot":{"$ref":"#/components/schemas/PlanConfig"},"active":{"type":"boolean"},"id":{"type":"string"}},"required":["stripeId","rootUserId","planSnapshot","active","id"]},"PaginatedSubscriptionResponse":{"type":"object","properties":{"results":{"description":"The results returned","type":"array","items":{"$ref":"#/components/schemas/SubscriptionResponse"}},"total":{"type":"number","description":"The total number of items in the filter"},"start":{"type":"number","description":"The requested start"},"limit":{"type":"number","description":"The requested limit"},"filter":{"type":"object","description":"The requested filter"}},"required":["results","total","start","limit","filter"]},"SubscriptionCheckoutRequest":{"type":"object","properties":{"planId":{"type":"string"}},"required":["planId"]},"SubscriptionCheckoutResponse":{"type":"object","properties":{"redirect":{"type":"string"}},"required":["redirect"]},"WalletReturnDto":{"type":"object","properties":{"id":{"type":"string","description":"The id of the wallet"},"profileId":{"type":"string","nullable":true},"createdAt":{"type":"string","description":"When this wallet was created"},"lastUsedAt":{"type":"string","nullable":true,"description":"When this wallet was last used"},"applicationId":{"type":"string","description":"The id of the parent application"}},"required":["id","createdAt","lastUsedAt","applicationId"]},"WalletAddressReturnDto":{"type":"object","properties":{"id":{"type":"string","description":"The id of the wallet the address belongs to"},"address":{"type":"string","description":"On-chain address"}},"required":["id","address"]},"WalletPublicKeyReturnDto":{"type":"object","properties":{"id":{"type":"string","description":"The id of the wallet the address belongs to"},"publicKey":{"type":"string","description":"The requested public key"}},"required":["id","publicKey"]},"Addresses":{"type":"object","properties":{"evm":{"type":"string"},"sol":{"type":"string"},"sui":{"type":"string"}}},"WalletResponse":{"type":"object","properties":{"profileId":{"type":"string","nullable":true},"applicationId":{"type":"string","nullable":false},"lastUsedAt":{"format":"date-time","type":"string","nullable":true,"description":"Deprecated"},"addresses":{"nullable":true,"description":"The field must be requested to be included in the response","allOf":[{"$ref":"#/components/schemas/Addresses"}]},"id":{"type":"string"},"createdAt":{"format":"date-time","type":"string"}},"required":["applicationId","id","createdAt"]},"PaginatedWalletResponse":{"type":"object","properties":{"results":{"description":"The results returned","type":"array","items":{"$ref":"#/components/schemas/WalletResponse"}},"total":{"type":"number","description":"The total number of items in the filter"},"start":{"type":"number","description":"The requested start"},"limit":{"type":"number","description":"The requested limit"},"filter":{"type":"object","description":"The requested filter"}},"required":["results","total","start","limit","filter"]},"UsageResponse":{"type":"object","properties":{"rootUserId":{"type":"string"},"key":{"enum":["wallet_creates","message_signatures","transaction_signatures"],"type":"string"},"value":{"type":"string","format":"int64"}},"required":["rootUserId","key","value"]},"PaginatedUsageResponse":{"type":"object","properties":{"results":{"description":"The results returned","type":"array","items":{"$ref":"#/components/schemas/UsageResponse"}},"total":{"type":"number","description":"The total number of items in the filter"},"start":{"type":"number","description":"The requested start"},"limit":{"type":"number","description":"The requested limit"},"filter":{"type":"object","description":"The requested filter"}},"required":["results","total","start","limit","filter"]},"ProfileIdentifierResponse":{"type":"object","properties":{"rootUserId":{"type":"string"},"profileId":{"type":"string"},"service":{"type":"string"},"value":{"type":"string"},"createdAt":{"type":"integer","default":"2024-02-22T20:35:44.354Z","format":"timestamp","minimum":0},"id":{"type":"string"}},"required":["rootUserId","profileId","service","value","createdAt","id"]},"PaginatedProfileResponse":{"type":"object","properties":{"results":{"description":"The results returned","type":"array","items":{"$ref":"#/components/schemas/ProfileResponse"}},"total":{"type":"number","description":"The total number of items in the filter"},"start":{"type":"number","description":"The requested start"},"limit":{"type":"number","description":"The requested limit"},"filter":{"type":"object","description":"The requested filter"}},"required":["results","total","start","limit","filter"]},"ProfileIdentifierCreateRequest":{"type":"object","properties":{"service":{"type":"string"},"value":{"type":"string"},"profileId":{"type":"string"}},"required":["service","value"]},"ProfileResponse":{"type":"object","properties":{"rootUserId":{"type":"string"},"applicationId":{"type":"string","nullable":false},"name":{"type":"string","nullable":true},"createdAt":{"type":"integer","default":"2024-02-22T20:35:44.355Z","format":"timestamp","minimum":0},"wallets":{"description":"This field is expandable","type":"array","items":{"$ref":"#/components/schemas/WalletResponse"}},"identifiers":{"description":"This field is expandable","type":"array","items":{"$ref":"#/components/schemas/ProfileIdentifierResponse"}},"id":{"type":"string"}},"required":["rootUserId","applicationId","createdAt","id"]},"ProfileCreateRequest":{"type":"object","properties":{"name":{"type":"string","nullable":true},"applicationId":{"type":"string","nullable":false}}},"ProfileUpdateRequest":{"type":"object","properties":{"name":{"type":"string","nullable":true}}},"ProfileAuthenticateRequest":{"type":"object","properties":{"duration":{"type":"number","nullable":true}}},"JWTResponse":{"type":"object","properties":{"jwt":{"type":"string","description":"A JWT Access Token"}},"required":["jwt"]},"SignRequestDto":{"type":"object","properties":{"walletId":{"type":"string","description":"Wallet UUID for operation","example":"1"},"chainType":{"type":"string","description":"Chain paradigm for operation","example":"EVM"},"chainId":{"type":"string","description":"[deprecated] evm chain id for operation","example":"1"},"message":{"type":"string","description":"the message to sign"}},"required":["walletId","chainType","message"]},"SignResponseDto":{"type":"object","properties":{"walletId":{"type":"string","description":"Wallet UUID for operation","example":"1"},"chainType":{"type":"string","description":"Chain paradigm for operation","example":"EVM"},"chainId":{"type":"string","description":"[deprecated] evm chain id for operation","example":"1"},"message":{"type":"string","description":"the message to sign"},"signature":{"type":"string","description":"The signed message"}},"required":["walletId","chainType","message","signature"]}}}}
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/v1/application": {
+            "post": {
+                "operationId": "ApplicationsController_create",
+                "summary": "Create an Application",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateApplicationDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateApplicationReturnDto"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateApplicationReturnDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                },
+                "tags": [
+                    "Application Endpoints"
+                ],
+                "security": [
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            },
+            "get": {
+                "operationId": "ApplicationsController_list",
+                "summary": "List Applications",
+                "description": "Fetch a paginated list of applications by filters",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "required": false,
+                        "in": "query",
+                        "description": "Position in list",
+                        "schema": {
+                            "minimum": 0,
+                            "maximum": 2147483647,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "Maximum items returned in list",
+                        "schema": {
+                            "minimum": 10,
+                            "maximum": 100,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApplicationListResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Application Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/application/{id}": {
+            "get": {
+                "operationId": "ApplicationsController_readApp",
+                "summary": "Get an Application",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApplicationReturnDto"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Not authorized to access this resource"
+                    },
+                    "404": {
+                        "description": "Resource not found!"
+                    }
+                },
+                "tags": [
+                    "Application Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            },
+            "patch": {
+                "operationId": "ApplicationsController_updateAppNoAppId",
+                "summary": "Update an Application",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EditApplicationDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApplicationReturnDto"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Not authorized to access this resource"
+                    },
+                    "404": {
+                        "description": "Resource not found!"
+                    }
+                },
+                "tags": [
+                    "Application Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/application/{id}/wallets": {
+            "get": {
+                "operationId": "ApplicationsController_getWallets",
+                "summary": "",
+                "description": "Deprecated. Please use List Wallets with the `applicationId` parameter.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Application Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/plan": {
+            "get": {
+                "operationId": "PlanController_list",
+                "summary": "List Plans",
+                "description": "Fetch a paginated list of plan records by filters",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "required": false,
+                        "in": "query",
+                        "description": "Position in list",
+                        "schema": {
+                            "minimum": 0,
+                            "maximum": 2147483647,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "Maximum items returned in list",
+                        "schema": {
+                            "minimum": 10,
+                            "maximum": 100,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaginatedPlanResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Plan Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "PlanController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlanCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Plan"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Plan Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/plan/{id}": {
+            "put": {
+                "operationId": "PlanController_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlanUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PlanResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Plan Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/subscription/manage": {
+            "get": {
+                "operationId": "SubscriptionController_manage",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Subscription Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/subscription/{id}": {
+            "get": {
+                "operationId": "SubscriptionController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    },
+                    "403": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Subscription Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/subscription": {
+            "get": {
+                "operationId": "SubscriptionController_list",
+                "summary": "List Subscriptions",
+                "description": "Fetch a paginated list of subscription records by filters",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "required": false,
+                        "in": "query",
+                        "description": "Position in list",
+                        "schema": {
+                            "minimum": 0,
+                            "maximum": 2147483647,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "Maximum items returned in list",
+                        "schema": {
+                            "minimum": 10,
+                            "maximum": 100,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaginatedSubscriptionResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Subscription Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "SubscriptionController_upsert",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SubscriptionCheckoutRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SubscriptionCheckoutResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Subscription Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/stripe/webhook": {
+            "post": {
+                "operationId": "StripeController_webhook",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Stripe Endpoints"
+                ]
+            }
+        },
+        "/v1/wallet": {
+            "post": {
+                "operationId": "WalletsController_create",
+                "summary": "Create a wallet",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WalletPostDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WalletReturnDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Wallet Endpoints"
+                ],
+                "security": [
+                    {
+                        "jwt-core": []
+                    },
+                    {
+                        "api-key": []
+                    }
+                ]
+            },
+            "get": {
+                "operationId": "WalletsController_list",
+                "summary": "List Wallets",
+                "description": "Fetch a paginated list of wallet records by filters",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "required": false,
+                        "in": "query",
+                        "description": "Position in list",
+                        "schema": {
+                            "minimum": 0,
+                            "maximum": 2147483647,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "Maximum items returned in list",
+                        "schema": {
+                            "minimum": 10,
+                            "maximum": 100,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "applicationId",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "profileId",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "profile"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "includeAddresses",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "evm",
+                                    "sol",
+                                    "sui"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaginatedWalletResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Wallet Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/wallet/address": {
+            "get": {
+                "operationId": "WalletsController_getAddress",
+                "summary": "Get Wallet Address",
+                "description": "Deprecated. Please use Get Wallet by ID with the `includeAddresses` parameter.",
+                "parameters": [
+                    {
+                        "name": "walletId",
+                        "required": true,
+                        "in": "query",
+                        "description": "Wallet UUID for operation",
+                        "example": "1",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chainType",
+                        "required": true,
+                        "in": "query",
+                        "description": "Chain paradigm for operation",
+                        "example": "EVM",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chainId",
+                        "required": false,
+                        "in": "query",
+                        "description": "[deprecated] evm chain id for operation",
+                        "example": "1",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WalletAddressReturnDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Wallet Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/wallet/public-key": {
+            "get": {
+                "operationId": "WalletsController_getPublicKey",
+                "summary": "Get Wallet Public Key",
+                "parameters": [
+                    {
+                        "name": "walletId",
+                        "required": true,
+                        "in": "query",
+                        "description": "Wallet UUID for operation",
+                        "example": "1",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chainType",
+                        "required": true,
+                        "in": "query",
+                        "description": "Chain paradigm for operation",
+                        "example": "EVM",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "chainId",
+                        "required": false,
+                        "in": "query",
+                        "description": "[deprecated] evm chain id for operation",
+                        "example": "1",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WalletPublicKeyReturnDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Wallet Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/wallet/{walletId}": {
+            "get": {
+                "operationId": "WalletsController_get",
+                "summary": "Get Wallet by ID",
+                "parameters": [
+                    {
+                        "name": "walletId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "profile"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "includeAddresses",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "evm",
+                                    "sol",
+                                    "sui"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WalletResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Wallet Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/wallet/history/{walletId}": {
+            "get": {
+                "operationId": "WalletsController_getWallets",
+                "parameters": [
+                    {
+                        "name": "walletId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Wallet Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/usage": {
+            "get": {
+                "operationId": "UsageController_list",
+                "summary": "List Usages",
+                "description": "Fetch a paginated list of usage records by filters",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "required": false,
+                        "in": "query",
+                        "description": "Position in list",
+                        "schema": {
+                            "minimum": 0,
+                            "maximum": 2147483647,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "Maximum items returned in list",
+                        "schema": {
+                            "minimum": 10,
+                            "maximum": 100,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaginatedUsageResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Usage Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/profile/identifier/{id}": {
+            "get": {
+                "operationId": "ProfileIdentifierController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProfileIdentifierResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Profile Identifier Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "ProfileIdentifierController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    },
+                    "403": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Profile Identifier Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/profile/identifier": {
+            "get": {
+                "operationId": "ProfileIdentifierController_list",
+                "summary": "List Profile Identifiers",
+                "description": "Fetch a paginated list of profile identifier records by filters",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "required": false,
+                        "in": "query",
+                        "description": "Position in list",
+                        "schema": {
+                            "minimum": 0,
+                            "maximum": 2147483647,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "Maximum items returned in list",
+                        "schema": {
+                            "minimum": 10,
+                            "maximum": 100,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "profileId",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaginatedProfileResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Profile Identifier Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "ProfileIdentifierController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProfileIdentifierCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProfileIdentifierResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Profile Identifier Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/profile/identifier/external-wallet/evm": {
+            "post": {
+                "operationId": "ProfileIdentifierController_createEVMExternalWallet",
+                "summary": "Create EVM Identifier",
+                "description": "Create a Profile Identifier for an external EVM wallet address.",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProfileEVMExternalWalletIdentifierCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProfileIdentifierResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Profile Identifier Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/profile/identifier/external-wallet/solana": {
+            "post": {
+                "operationId": "ProfileIdentifierController_createSOLExternalWallet",
+                "summary": "Create Solana Identifier",
+                "description": "Create a Profile Identifier for an external Solana wallet address.",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProfileSOLExternalWalletIdentifierCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProfileIdentifierResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Profile Identifier Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/profile/identifier/external-wallet/sui": {
+            "post": {
+                "operationId": "ProfileIdentifierController_createSUIExternalWallet",
+                "summary": "Create Sui Identifier",
+                "description": "Create a Profile Identifier for an external Sui wallet address.",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProfileSUIExternalWalletIdentifierCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProfileIdentifierResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Profile Identifier Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/profile/{id}": {
+            "get": {
+                "operationId": "ProfileController_get",
+                "parameters": [
+                    {
+                        "name": "expand",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "identifiers",
+                                    "wallets"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "includeAddresses",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "evm",
+                                    "sol",
+                                    "sui"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProfileResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Profile Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            },
+            "put": {
+                "operationId": "ProfileController_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProfileUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProfileResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Profile Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/profile": {
+            "get": {
+                "operationId": "ProfileController_list",
+                "summary": "List Profiles",
+                "description": "Fetch a paginated list of profile records by filters",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "required": false,
+                        "in": "query",
+                        "description": "Position in list",
+                        "schema": {
+                            "minimum": 0,
+                            "maximum": 2147483647,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "Maximum items returned in list",
+                        "schema": {
+                            "minimum": 10,
+                            "maximum": 100,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "applicationId",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expand",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "identifiers",
+                                    "wallets"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "includeAddresses",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "evm",
+                                    "sol",
+                                    "sui"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaginatedProfileResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Profile Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "ProfileController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProfileCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProfileResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Profile Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/profile/{id}/authenticate": {
+            "post": {
+                "operationId": "ProfileController_authenticate",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProfileAuthenticateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JWTResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Profile Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/api-key": {
+            "post": {
+                "operationId": "APIKeyController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/APIKeyCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/APIKey"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Api Key Endpoints"
+                ],
+                "security": [
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            },
+            "get": {
+                "operationId": "APIKeyController_list",
+                "summary": "List API Keys",
+                "description": "Fetch a paginated list of API Key records by filters",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "required": false,
+                        "in": "query",
+                        "description": "Position in list",
+                        "schema": {
+                            "minimum": 0,
+                            "maximum": 2147483647,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "Maximum items returned in list",
+                        "schema": {
+                            "minimum": 10,
+                            "maximum": 100,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "apiKey",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "label",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "enabledOn",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "format": "date-time",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "applicationId",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "required": true,
+                        "name": "id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "required": true,
+                        "name": "name",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "required": true,
+                        "name": "email",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "required": true,
+                        "name": "description",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "required": true,
+                        "name": "createdAt",
+                        "in": "query",
+                        "schema": {
+                            "format": "date-time",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "required": true,
+                        "name": "lastUpdated",
+                        "in": "query",
+                        "schema": {
+                            "format": "date-time",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "required": true,
+                        "name": "rootUserId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "required": true,
+                        "name": "identityId",
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "required": true,
+                        "name": "apiKeys",
+                        "in": "query",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/APIKey"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/APIKeyListResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Api Key Endpoints"
+                ],
+                "security": [
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/api-key/{id}": {
+            "delete": {
+                "operationId": "APIKeyController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    },
+                    "403": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Api Key Endpoints"
+                ],
+                "security": [
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/sign/message": {
+            "post": {
+                "operationId": "SignController_signMessage",
+                "summary": "Sign a Message",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SignRequestDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SignResponseDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Sign Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/sign/transaction": {
+            "post": {
+                "operationId": "SignController_signTransaction",
+                "summary": "Sign a Transaction",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SignRequestDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SignResponseDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Sign Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/flag/{id}": {
+            "get": {
+                "operationId": "FlagController_get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FlagResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Flag Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "FlagController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    },
+                    "403": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Flag Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/flag": {
+            "get": {
+                "operationId": "FlagController_list",
+                "summary": "List Flags",
+                "description": "Fetch a paginated list of flag records by filters",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "required": false,
+                        "in": "query",
+                        "description": "Position in list",
+                        "schema": {
+                            "minimum": 0,
+                            "maximum": 2147483647,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "Maximum items returned in list",
+                        "schema": {
+                            "minimum": 10,
+                            "maximum": 100,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaginatedProfileResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Flag Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "FlagController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FlagCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FlagResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Flag Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/stats/overview": {
+            "get": {
+                "operationId": "StatsController_overview",
+                "summary": "Get Stats",
+                "description": "Retrieve stats based on API key usage.",
+                "parameters": [
+                    {
+                        "name": "rootUserId",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "applicationId",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "startTime",
+                        "required": false,
+                        "in": "query",
+                        "description": "Defaults to 24 hours ago",
+                        "schema": {
+                            "minimum": 0,
+                            "format": "timestamp",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "endTime",
+                        "required": false,
+                        "in": "query",
+                        "description": "Defaults to now",
+                        "schema": {
+                            "minimum": 0,
+                            "format": "timestamp",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StatsOverviewResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Stats Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/stats/histogram": {
+            "get": {
+                "operationId": "StatsController_histogram",
+                "parameters": [
+                    {
+                        "name": "rootUserId",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "applicationId",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "startTime",
+                        "required": false,
+                        "in": "query",
+                        "description": "Defaults to 7 days ago",
+                        "schema": {
+                            "minimum": 0,
+                            "format": "timestamp",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "endTime",
+                        "required": false,
+                        "in": "query",
+                        "description": "Defaults to now",
+                        "schema": {
+                            "minimum": 0,
+                            "format": "timestamp",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "method",
+                        "required": false,
+                        "in": "query",
+                        "description": "HTTP method to filter by",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endpoint",
+                        "required": false,
+                        "in": "query",
+                        "description": "Endpoint path to filter by",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "required": false,
+                        "in": "query",
+                        "description": "HTTP status code to filter by",
+                        "schema": {
+                            "minimum": 100,
+                            "maximum": 599,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "results": {
+                                            "type": "object",
+                                            "additionalProperties": true,
+                                            "description": "keys are midnight unix timestamps, with values that are aggregate counts for that day"
+                                        }
+                                    },
+                                    "example": {
+                                        "results": {
+                                            "1577836800": 123,
+                                            "1577923200": 234
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Stats Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/log/request": {
+            "get": {
+                "operationId": "LogController_request",
+                "summary": "Get Request Logs",
+                "description": "Retrieve logs based on API key requests.",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "required": false,
+                        "in": "query",
+                        "description": "Position in list",
+                        "schema": {
+                            "minimum": 0,
+                            "maximum": 2147483647,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "description": "Maximum items returned in list",
+                        "schema": {
+                            "minimum": 10,
+                            "maximum": 100,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "rootUserId",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "applicationId",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "startTime",
+                        "required": false,
+                        "in": "query",
+                        "description": "Defaults to 7 days ago",
+                        "schema": {
+                            "minimum": 0,
+                            "format": "timestamp",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "endTime",
+                        "required": false,
+                        "in": "query",
+                        "description": "Defaults to now",
+                        "schema": {
+                            "minimum": 0,
+                            "format": "timestamp",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "method",
+                        "required": false,
+                        "in": "query",
+                        "description": "HTTP method to filter by",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endpoint",
+                        "required": false,
+                        "in": "query",
+                        "description": "Endpoint path to filter by",
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "required": false,
+                        "in": "query",
+                        "description": "HTTP status code to filter by",
+                        "schema": {
+                            "minimum": 100,
+                            "maximum": 599,
+                            "format": "int32",
+                            "nullable": true,
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaginatedRequestLogResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Log Endpoints"
+                ],
+                "security": [
+                    {
+                        "api-key": []
+                    },
+                    {
+                        "jwt-core": []
+                    }
+                ]
+            }
+        },
+        "/v1/health": {
+            "get": {
+                "operationId": "HealthController_check",
+                "summary": "Get Health",
+                "description": "Get system health info",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The Health Check is successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "ok"
+                                        },
+                                        "info": {
+                                            "type": "object",
+                                            "example": {
+                                                "database": {
+                                                    "status": "up"
+                                                }
+                                            },
+                                            "additionalProperties": {
+                                                "type": "object",
+                                                "required": [
+                                                    "status"
+                                                ],
+                                                "properties": {
+                                                    "status": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "additionalProperties": true
+                                            },
+                                            "nullable": true
+                                        },
+                                        "error": {
+                                            "type": "object",
+                                            "example": {},
+                                            "additionalProperties": {
+                                                "type": "object",
+                                                "required": [
+                                                    "status"
+                                                ],
+                                                "properties": {
+                                                    "status": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "additionalProperties": true
+                                            },
+                                            "nullable": true
+                                        },
+                                        "details": {
+                                            "type": "object",
+                                            "example": {
+                                                "database": {
+                                                    "status": "up"
+                                                }
+                                            },
+                                            "additionalProperties": {
+                                                "type": "object",
+                                                "required": [
+                                                    "status"
+                                                ],
+                                                "properties": {
+                                                    "status": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "additionalProperties": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "503": {
+                        "description": "The Health Check is not successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "error"
+                                        },
+                                        "info": {
+                                            "type": "object",
+                                            "example": {
+                                                "database": {
+                                                    "status": "up"
+                                                }
+                                            },
+                                            "additionalProperties": {
+                                                "type": "object",
+                                                "required": [
+                                                    "status"
+                                                ],
+                                                "properties": {
+                                                    "status": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "additionalProperties": true
+                                            },
+                                            "nullable": true
+                                        },
+                                        "error": {
+                                            "type": "object",
+                                            "example": {
+                                                "redis": {
+                                                    "status": "down",
+                                                    "message": "Could not connect"
+                                                }
+                                            },
+                                            "additionalProperties": {
+                                                "type": "object",
+                                                "required": [
+                                                    "status"
+                                                ],
+                                                "properties": {
+                                                    "status": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "additionalProperties": true
+                                            },
+                                            "nullable": true
+                                        },
+                                        "details": {
+                                            "type": "object",
+                                            "example": {
+                                                "database": {
+                                                    "status": "up"
+                                                },
+                                                "redis": {
+                                                    "status": "down",
+                                                    "message": "Could not connect"
+                                                }
+                                            },
+                                            "additionalProperties": {
+                                                "type": "object",
+                                                "required": [
+                                                    "status"
+                                                ],
+                                                "properties": {
+                                                    "status": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "additionalProperties": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Health Check"
+                ]
+            }
+        }
+    },
+    "x-readme": {
+        "proxy-enabled": false
+    },
+    "info": {
+        "title": "Stardust API",
+        "description": "",
+        "version": "v1",
+        "contact": {}
+    },
+    "tags": [],
+    "servers": [
+        {
+            "url": "https://vault-api.stardust.gg",
+            "description": "WaaS API"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "jwt-core": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "Authorization"
+            },
+            "api-key": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "x-api-key"
+            }
+        },
+        "schemas": {
+            "CreateApplicationDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the application"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The email address associated with this app"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the application"
+                    }
+                },
+                "required": [
+                    "name",
+                    "email"
+                ]
+            },
+            "CreateApplicationReturnDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The id of the application"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the application"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The email address associated with this app"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the application"
+                    },
+                    "rootUserId": {
+                        "type": "string",
+                        "description": "The Root Identity Id associated with the application"
+                    },
+                    "apiKey": {
+                        "type": "string",
+                        "description": "The API keys associated with the application"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "email",
+                    "apiKey"
+                ]
+            },
+            "ApplicationReturnDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The id of the application"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the application"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The email address associated with this app"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the application"
+                    },
+                    "rootUserId": {
+                        "type": "string",
+                        "description": "The Root Identity Id associated with the application"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "email"
+                ]
+            },
+            "ApplicationListResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "description": "The results returned",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApplicationReturnDto"
+                        }
+                    },
+                    "total": {
+                        "type": "number",
+                        "description": "The total number of items in the filter"
+                    },
+                    "start": {
+                        "type": "number",
+                        "description": "The requested start",
+                        "default": 0
+                    },
+                    "limit": {
+                        "type": "number",
+                        "description": "The requested limit",
+                        "default": 100
+                    },
+                    "filter": {
+                        "type": "object",
+                        "description": "The requested filter"
+                    }
+                },
+                "required": [
+                    "results",
+                    "total",
+                    "start",
+                    "limit",
+                    "filter"
+                ]
+            },
+            "EditApplicationDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the application"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The email address associated with this app"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the application"
+                    }
+                }
+            },
+            "PlanLimit": {
+                "type": "object",
+                "properties": {
+                    "hard": {
+                        "type": "integer",
+                        "format": "int32",
+                        "minimum": 1,
+                        "nullable": true
+                    },
+                    "soft": {
+                        "type": "integer",
+                        "format": "int32",
+                        "minimum": 1,
+                        "nullable": true
+                    }
+                }
+            },
+            "PlanLimits": {
+                "type": "object",
+                "properties": {
+                    "walletCreate": {
+                        "$ref": "#/components/schemas/PlanLimit"
+                    }
+                },
+                "required": [
+                    "walletCreate"
+                ]
+            },
+            "PlanPrice": {
+                "type": "object",
+                "properties": {
+                    "amount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "stripeId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "amount",
+                    "stripeId"
+                ]
+            },
+            "PlanPriceList": {
+                "type": "object",
+                "properties": {
+                    "base": {
+                        "$ref": "#/components/schemas/PlanPrice"
+                    },
+                    "wallet": {
+                        "$ref": "#/components/schemas/PlanPrice"
+                    }
+                },
+                "required": [
+                    "base",
+                    "wallet"
+                ]
+            },
+            "PlanConfig": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "limits": {
+                        "$ref": "#/components/schemas/PlanLimits"
+                    },
+                    "priceList": {
+                        "$ref": "#/components/schemas/PlanPriceList"
+                    },
+                    "period": {
+                        "type": "string",
+                        "enum": [
+                            "month"
+                        ]
+                    },
+                    "selfServe": {
+                        "type": "boolean"
+                    },
+                    "allowedUpgrades": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "features": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "name",
+                    "limits",
+                    "priceList",
+                    "period",
+                    "selfServe",
+                    "allowedUpgrades",
+                    "features"
+                ]
+            },
+            "PlanResponse": {
+                "type": "object",
+                "properties": {
+                    "config": {
+                        "$ref": "#/components/schemas/PlanConfig"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "config",
+                    "active",
+                    "id"
+                ]
+            },
+            "PaginatedPlanResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "description": "The results returned",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PlanResponse"
+                        }
+                    },
+                    "total": {
+                        "type": "number",
+                        "description": "The total number of items in the filter"
+                    },
+                    "start": {
+                        "type": "number",
+                        "description": "The requested start",
+                        "default": 0
+                    },
+                    "limit": {
+                        "type": "number",
+                        "description": "The requested limit",
+                        "default": 100
+                    },
+                    "filter": {
+                        "type": "object",
+                        "description": "The requested filter"
+                    }
+                },
+                "required": [
+                    "results",
+                    "total",
+                    "start",
+                    "limit",
+                    "filter"
+                ]
+            },
+            "PlanCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "config": {
+                        "$ref": "#/components/schemas/PlanConfig"
+                    }
+                },
+                "required": [
+                    "active",
+                    "config"
+                ]
+            },
+            "Plan": {
+                "type": "object",
+                "properties": {
+                    "config": {
+                        "$ref": "#/components/schemas/PlanConfig"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "config",
+                    "active",
+                    "id"
+                ]
+            },
+            "PlanUpdateRequest": {
+                "type": "object",
+                "properties": {
+                    "config": {
+                        "$ref": "#/components/schemas/PlanConfig"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "config",
+                    "active"
+                ]
+            },
+            "ErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "SubscriptionResponse": {
+                "type": "object",
+                "properties": {
+                    "stripeId": {
+                        "type": "string"
+                    },
+                    "rootUserId": {
+                        "type": "string"
+                    },
+                    "planSnapshot": {
+                        "$ref": "#/components/schemas/PlanConfig"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "stripeId",
+                    "rootUserId",
+                    "planSnapshot",
+                    "active",
+                    "id"
+                ]
+            },
+            "PaginatedSubscriptionResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "description": "The results returned",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SubscriptionResponse"
+                        }
+                    },
+                    "total": {
+                        "type": "number",
+                        "description": "The total number of items in the filter"
+                    },
+                    "start": {
+                        "type": "number",
+                        "description": "The requested start",
+                        "default": 0
+                    },
+                    "limit": {
+                        "type": "number",
+                        "description": "The requested limit",
+                        "default": 100
+                    },
+                    "filter": {
+                        "type": "object",
+                        "description": "The requested filter"
+                    }
+                },
+                "required": [
+                    "results",
+                    "total",
+                    "start",
+                    "limit",
+                    "filter"
+                ]
+            },
+            "SubscriptionCheckoutRequest": {
+                "type": "object",
+                "properties": {
+                    "planId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "planId"
+                ]
+            },
+            "SubscriptionCheckoutResponse": {
+                "type": "object",
+                "properties": {
+                    "redirect": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "redirect"
+                ]
+            },
+            "WalletPostDto": {
+                "type": "object",
+                "properties": {
+                    "applicationId": {
+                        "type": "string",
+                        "nullable": false
+                    }
+                }
+            },
+            "WalletReturnDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The id of the wallet"
+                    },
+                    "profileId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "When this wallet was created"
+                    },
+                    "lastUsedAt": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "When this wallet was last used"
+                    },
+                    "applicationId": {
+                        "type": "string",
+                        "description": "The id of the parent application"
+                    }
+                },
+                "required": [
+                    "id",
+                    "createdAt",
+                    "lastUsedAt",
+                    "applicationId"
+                ]
+            },
+            "WalletAddressReturnDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The id of the wallet the address belongs to"
+                    },
+                    "address": {
+                        "type": "string",
+                        "description": "On-chain address"
+                    }
+                },
+                "required": [
+                    "id",
+                    "address"
+                ]
+            },
+            "WalletPublicKeyReturnDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The id of the wallet the address belongs to"
+                    },
+                    "publicKey": {
+                        "type": "string",
+                        "description": "The requested public key"
+                    }
+                },
+                "required": [
+                    "id",
+                    "publicKey"
+                ]
+            },
+            "Addresses": {
+                "type": "object",
+                "properties": {
+                    "evm": {
+                        "type": "string"
+                    },
+                    "sol": {
+                        "type": "string"
+                    },
+                    "sui": {
+                        "type": "string"
+                    }
+                }
+            },
+            "WalletResponse": {
+                "type": "object",
+                "properties": {
+                    "profileId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "applicationId": {
+                        "type": "string",
+                        "nullable": false
+                    },
+                    "lastUsedAt": {
+                        "format": "date-time",
+                        "type": "string",
+                        "nullable": true,
+                        "description": "Deprecated"
+                    },
+                    "addresses": {
+                        "nullable": true,
+                        "description": "The field must be requested to be included in the response",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/Addresses"
+                            }
+                        ]
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "applicationId",
+                    "id",
+                    "createdAt"
+                ]
+            },
+            "PaginatedWalletResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "description": "The results returned",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/WalletResponse"
+                        }
+                    },
+                    "total": {
+                        "type": "number",
+                        "description": "The total number of items in the filter"
+                    },
+                    "start": {
+                        "type": "number",
+                        "description": "The requested start",
+                        "default": 0
+                    },
+                    "limit": {
+                        "type": "number",
+                        "description": "The requested limit",
+                        "default": 100
+                    },
+                    "filter": {
+                        "type": "object",
+                        "description": "The requested filter"
+                    }
+                },
+                "required": [
+                    "results",
+                    "total",
+                    "start",
+                    "limit",
+                    "filter"
+                ]
+            },
+            "UsageResponse": {
+                "type": "object",
+                "properties": {
+                    "rootUserId": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "enum": [
+                            "wallet_creates",
+                            "message_signatures",
+                            "transaction_signatures"
+                        ],
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "int64"
+                    }
+                },
+                "required": [
+                    "rootUserId",
+                    "key",
+                    "value"
+                ]
+            },
+            "PaginatedUsageResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "description": "The results returned",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/UsageResponse"
+                        }
+                    },
+                    "total": {
+                        "type": "number",
+                        "description": "The total number of items in the filter"
+                    },
+                    "start": {
+                        "type": "number",
+                        "description": "The requested start",
+                        "default": 0
+                    },
+                    "limit": {
+                        "type": "number",
+                        "description": "The requested limit",
+                        "default": 100
+                    },
+                    "filter": {
+                        "type": "object",
+                        "description": "The requested filter"
+                    }
+                },
+                "required": [
+                    "results",
+                    "total",
+                    "start",
+                    "limit",
+                    "filter"
+                ]
+            },
+            "ProfileIdentifierResponse": {
+                "type": "object",
+                "properties": {
+                    "rootUserId": {
+                        "type": "string"
+                    },
+                    "profileId": {
+                        "type": "string"
+                    },
+                    "service": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "integer",
+                        "default": "2024-04-04T17:14:46.041Z",
+                        "format": "timestamp",
+                        "minimum": 0
+                    },
+                    "type": {
+                        "enum": [
+                            "custom",
+                            "external-wallet"
+                        ],
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "rootUserId",
+                    "profileId",
+                    "service",
+                    "value",
+                    "createdAt",
+                    "type",
+                    "id"
+                ]
+            },
+            "PaginatedProfileResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "description": "The results returned",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FlagResponse"
+                        }
+                    },
+                    "total": {
+                        "type": "number",
+                        "description": "The total number of items in the filter"
+                    },
+                    "start": {
+                        "type": "number",
+                        "description": "The requested start",
+                        "default": 0
+                    },
+                    "limit": {
+                        "type": "number",
+                        "description": "The requested limit",
+                        "default": 100
+                    },
+                    "filter": {
+                        "type": "object",
+                        "description": "The requested filter"
+                    }
+                },
+                "required": [
+                    "results",
+                    "total",
+                    "start",
+                    "limit",
+                    "filter"
+                ]
+            },
+            "ProfileIdentifierCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "profileId": {
+                        "type": "string"
+                    },
+                    "service": {
+                        "type": "string",
+                        "nullable": false
+                    },
+                    "value": {
+                        "type": "string",
+                        "nullable": false
+                    }
+                },
+                "required": [
+                    "service",
+                    "value"
+                ]
+            },
+            "ProfileEVMExternalWalletIdentifierCreate": {
+                "type": "object",
+                "properties": {
+                    "profileId": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "maxLength": 130,
+                        "nullable": false
+                    }
+                },
+                "required": [
+                    "value"
+                ]
+            },
+            "ProfileSOLExternalWalletIdentifierCreate": {
+                "type": "object",
+                "properties": {
+                    "profileId": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "maxLength": 44,
+                        "nullable": false
+                    }
+                },
+                "required": [
+                    "value"
+                ]
+            },
+            "ProfileSUIExternalWalletIdentifierCreate": {
+                "type": "object",
+                "properties": {
+                    "profileId": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "maxLength": 70,
+                        "nullable": false
+                    }
+                },
+                "required": [
+                    "value"
+                ]
+            },
+            "ProfileResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "rootUserId": {
+                        "type": "string"
+                    },
+                    "applicationId": {
+                        "type": "string",
+                        "nullable": false
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "integer",
+                        "default": "2024-04-04T17:14:46.042Z",
+                        "format": "timestamp",
+                        "minimum": 0
+                    },
+                    "wallets": {
+                        "description": "This field is expandable",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/WalletResponse"
+                        }
+                    },
+                    "identifiers": {
+                        "description": "This field is expandable",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ProfileIdentifierResponse"
+                        }
+                    }
+                },
+                "required": [
+                    "id",
+                    "rootUserId",
+                    "applicationId",
+                    "createdAt"
+                ]
+            },
+            "ProfileCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "applicationId": {
+                        "type": "string",
+                        "nullable": false
+                    }
+                }
+            },
+            "ProfileUpdateRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                }
+            },
+            "ProfileAuthenticateRequest": {
+                "type": "object",
+                "properties": {
+                    "duration": {
+                        "type": "number",
+                        "nullable": true
+                    }
+                }
+            },
+            "JWTResponse": {
+                "type": "object",
+                "properties": {
+                    "jwt": {
+                        "type": "string",
+                        "description": "A JWT Access Token"
+                    }
+                },
+                "required": [
+                    "jwt"
+                ]
+            },
+            "APIKeyCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "label": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "applicationId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "applicationId"
+                ]
+            },
+            "APIKey": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "apiKey": {
+                        "type": "string"
+                    },
+                    "label": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "enabledOn": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "applicationId": {
+                        "type": "string"
+                    },
+                    "application": {
+                        "$ref": "#/components/schemas/Application"
+                    }
+                },
+                "required": [
+                    "id",
+                    "apiKey",
+                    "enabledOn",
+                    "applicationId",
+                    "application"
+                ]
+            },
+            "Application": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "lastUpdated": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "rootUserId": {
+                        "type": "string"
+                    },
+                    "identityId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "apiKeys": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/APIKey"
+                        }
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "email",
+                    "description",
+                    "createdAt",
+                    "lastUpdated",
+                    "rootUserId",
+                    "identityId",
+                    "apiKeys"
+                ]
+            },
+            "APIKeyListResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "description": "The results returned",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/APIKey"
+                        }
+                    },
+                    "total": {
+                        "type": "number",
+                        "description": "The total number of items in the filter"
+                    },
+                    "start": {
+                        "type": "number",
+                        "description": "The requested start",
+                        "default": 0
+                    },
+                    "limit": {
+                        "type": "number",
+                        "description": "The requested limit",
+                        "default": 100
+                    },
+                    "filter": {
+                        "type": "object",
+                        "description": "The requested filter"
+                    }
+                },
+                "required": [
+                    "results",
+                    "total",
+                    "start",
+                    "limit",
+                    "filter"
+                ]
+            },
+            "SignRequestDto": {
+                "type": "object",
+                "properties": {
+                    "walletId": {
+                        "type": "string",
+                        "description": "Wallet UUID for operation",
+                        "example": "1"
+                    },
+                    "chainType": {
+                        "type": "string",
+                        "description": "Chain paradigm for operation",
+                        "example": "EVM"
+                    },
+                    "chainId": {
+                        "type": "string",
+                        "description": "[deprecated] evm chain id for operation",
+                        "example": "1"
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "the message to sign"
+                    }
+                },
+                "required": [
+                    "walletId",
+                    "chainType",
+                    "message"
+                ]
+            },
+            "SignResponseDto": {
+                "type": "object",
+                "properties": {
+                    "walletId": {
+                        "type": "string",
+                        "description": "Wallet UUID for operation",
+                        "example": "1"
+                    },
+                    "chainType": {
+                        "type": "string",
+                        "description": "Chain paradigm for operation",
+                        "example": "EVM"
+                    },
+                    "chainId": {
+                        "type": "string",
+                        "description": "[deprecated] evm chain id for operation",
+                        "example": "1"
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "the message to sign"
+                    },
+                    "signature": {
+                        "type": "string",
+                        "description": "The signed message"
+                    }
+                },
+                "required": [
+                    "walletId",
+                    "chainType",
+                    "message",
+                    "signature"
+                ]
+            },
+            "FlagResponse": {
+                "type": "object",
+                "properties": {
+                    "rootUserId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "key",
+                    "value",
+                    "id"
+                ]
+            },
+            "FlagCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "rootUserId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "key",
+                    "value"
+                ]
+            },
+            "ProfilesOverviewResponse": {
+                "type": "object",
+                "properties": {
+                    "created": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "active": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "lifetime": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "required": [
+                    "created",
+                    "active",
+                    "lifetime"
+                ]
+            },
+            "SignaturesOverviewResponse": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "required": [
+                    "count"
+                ]
+            },
+            "RequestsOverviewResponse": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "errorCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "maxRate": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "required": [
+                    "count",
+                    "errorCount",
+                    "maxRate"
+                ]
+            },
+            "ResponsesOverviewResponse": {
+                "type": "object",
+                "properties": {
+                    "medianTime": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "required": [
+                    "medianTime"
+                ]
+            },
+            "StatsOverviewResponse": {
+                "type": "object",
+                "properties": {
+                    "profiles": {
+                        "$ref": "#/components/schemas/ProfilesOverviewResponse"
+                    },
+                    "signatures": {
+                        "$ref": "#/components/schemas/SignaturesOverviewResponse"
+                    },
+                    "requests": {
+                        "$ref": "#/components/schemas/RequestsOverviewResponse"
+                    },
+                    "responses": {
+                        "$ref": "#/components/schemas/ResponsesOverviewResponse"
+                    }
+                },
+                "required": [
+                    "profiles",
+                    "signatures",
+                    "requests",
+                    "responses"
+                ]
+            },
+            "RequestLog": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "rootUserId": {
+                        "type": "string"
+                    },
+                    "applicationId": {
+                        "type": "string"
+                    },
+                    "clientTimestamp": {
+                        "type": "integer",
+                        "format": "timestamp",
+                        "minimum": 0
+                    },
+                    "serverTimestamp": {
+                        "type": "integer",
+                        "format": "timestamp",
+                        "minimum": 0
+                    },
+                    "httpMethod": {
+                        "type": "string"
+                    },
+                    "endpointName": {
+                        "type": "string"
+                    },
+                    "endpoint": {
+                        "type": "string"
+                    },
+                    "requestParams": {
+                        "type": "object"
+                    },
+                    "responseStatus": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "responseTime": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "response": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "rootUserId",
+                    "applicationId",
+                    "clientTimestamp",
+                    "serverTimestamp",
+                    "httpMethod",
+                    "endpointName",
+                    "endpoint",
+                    "requestParams",
+                    "responseStatus",
+                    "responseTime",
+                    "response"
+                ]
+            },
+            "PaginatedRequestLogResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "description": "The results returned",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RequestLog"
+                        }
+                    },
+                    "total": {
+                        "type": "number",
+                        "description": "The total number of items in the filter"
+                    },
+                    "start": {
+                        "type": "number",
+                        "description": "The requested start",
+                        "default": 0
+                    },
+                    "limit": {
+                        "type": "number",
+                        "description": "The requested limit",
+                        "default": 100
+                    },
+                    "filter": {
+                        "type": "object",
+                        "description": "The requested filter"
+                    }
+                },
+                "required": [
+                    "results",
+                    "total",
+                    "start",
+                    "limit",
+                    "filter"
+                ]
+            }
+        }
+    }
+}

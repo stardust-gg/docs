@@ -26,10 +26,6 @@
       {
         "name": "Change Log",
         "url": "change-log"
-      },
-      {
-        "name": "Beta Features",
-        "url": "beta-features"
       }
     ],
     "anchors": [
@@ -56,53 +52,64 @@
         "pages": [
             "typescript-sdk/getting-started",
             "typescript-sdk/application",
-            "typescript-sdk/wallets",
             {
-              "group": "Ethers v5",
+              "group": "Profiles",
               "pages": [
-                "ethers-v5/getting-started",
-                "ethers-v5/send-transaction",
-                "ethers-v5/sign-message",
-                "ethers-v5/sign-message-unicode",
-                "ethers-v5/sign-transaction",
-                "ethers-v5/sign-typed-data"
+                "typescript-sdk/profiles/profiles-overview",
+                "typescript-sdk/profiles/profile-identifiers",
+                "typescript-sdk/profiles/wallets"
               ]
             },
             {
-              "group": "Ethers v6",
+              "group": "Signers",
               "pages": [
-                "ethers-v6/getting-started",
-                "ethers-v6/send-transaction",
-                "ethers-v6/sign-message",
-                "ethers-v6/sign-transaction",
-                "ethers-v6/sign-typed-data"
-              ]
-            },
-            "typescript-sdk/evm",
-            {
-              "group": "IMX",
-              "pages": [
-                "imx/getting-started",
-                "imx/register-user",
-                "imx/sign-message"
-              ]
-            },
-            {
-              "group": "Sui",
-              "pages": [
-                "sui/getting-started",
-                "sui/sign-personal-message",
-                "sui/sign-transaction-block"
+                {
+                  "group": "Ethers v5",
+                  "pages": [
+                    "typescript-sdk/signers/ethers-v5/getting-started",
+                    "typescript-sdk/signers/ethers-v5/send-transaction",
+                    "typescript-sdk/signers/ethers-v5/sign-message",
+                    "typescript-sdk/signers/ethers-v5/sign-message-unicode",
+                    "typescript-sdk/signers/ethers-v5/sign-transaction",
+                    "typescript-sdk/signers/ethers-v5/sign-typed-data"
+                  ]
+                },
+                {
+                  "group": "Ethers v6",
+                  "pages": [
+                    "typescript-sdk/signers/ethers-v6/getting-started",
+                    "typescript-sdk/signers/ethers-v6/send-transaction",
+                    "typescript-sdk/signers/ethers-v6/sign-message",
+                    "typescript-sdk/signers/ethers-v6/sign-transaction",
+                    "typescript-sdk/signers/ethers-v6/sign-typed-data"
+                  ]
+                },
+                "typescript-sdk/signers/evm",
+                {
+                  "group": "IMX",
+                  "pages": [
+                    "typescript-sdk/signers/imx/getting-started",
+                    "typescript-sdk/signers/imx/register-user",
+                    "typescript-sdk/signers/imx/sign-message"
+                  ]
+                },
+                {
+                  "group": "Sui",
+                  "pages": [
+                    "typescript-sdk/signers/sui/getting-started",
+                    "typescript-sdk/signers/sui/sign-personal-message",
+                    "typescript-sdk/signers/sui/sign-transaction-block"
+                  ]
+                },
+                {
+                  "group": "Sol",
+                  "pages": [
+                    "typescript-sdk/signers/sol/getting-started"
+                  ]
+                }
               ]
             }
-        ]
-      },
-      {
-        "group": "Other SDKs",
-        "pages": [
-            "other-sdks/nethereum",
-            "other-sdks/solana-web3js"
-        ]
+          ]
       },
       {
         "group": "Application Endpoints",
@@ -116,8 +123,8 @@
         "group": "Wallet Endpoints",
         "pages": [
           "api-reference/wallet-endpoints/create-a-wallet",
-          "api-reference/wallet-endpoints/get-wallet-address",
-          "api-reference/wallet-endpoints/get-wallet-by-id"
+          "api-reference/wallet-endpoints/get-wallet-by-id",
+          "api-reference/wallet-endpoints/list-wallets"
         ]
       },
       {
@@ -136,7 +143,10 @@
           "api-reference/profile-identifier-endpoints/create-identifier",
           "api-reference/profile-identifier-endpoints/delete-identifier",
           "api-reference/profile-identifier-endpoints/get-identifier",
-          "api-reference/profile-identifier-endpoints/list-profile-identifiers"
+          "api-reference/profile-identifier-endpoints/list-profile-identifiers",
+          "api-reference/profile-identifier-endpoints/create-external-evm",
+          "api-reference/profile-identifier-endpoints/create-external-solana",
+          "api-reference/profile-identifier-endpoints/create-external-sui"
         ]
       },
       {
@@ -156,56 +166,6 @@
         "pages": [
           "change-log/v2",
           "change-log/billing-faq"
-        ]
-      },
-      {
-        "group": "Profiles",
-        "pages": [
-          "beta-features/profiles-overview",
-          "beta-features/profile-identifiers",
-          {
-            "group": "Signers",
-            "pages": [
-              "beta-features/signers/evm",
-              {
-                "group": "IMX",
-                "pages": [
-                  "beta-features/signers/imx/getting-started",
-                  "beta-features/signers/imx/register-user",
-                  "beta-features/signers/imx/sign-message"
-                ]
-              },
-              {
-                "group": "Ethers v5",
-                "pages": [
-                  "beta-features/signers/ethers-v5/getting-started",
-                  "beta-features/signers/ethers-v5/send-transaction",
-                  "beta-features/signers/ethers-v5/sign-message",
-                  "beta-features/signers/ethers-v5/sign-message-unicode",
-                  "beta-features/signers/ethers-v5/sign-transaction",
-                  "beta-features/signers/ethers-v5/sign-typed-data"
-                ]
-              },
-              {
-                "group": "Ethers v6",
-                "pages": [
-                  "beta-features/signers/ethers-v6/getting-started",
-                  "beta-features/signers/ethers-v6/send-transaction",
-                  "beta-features/signers/ethers-v6/sign-message",
-                  "beta-features/signers/ethers-v6/sign-transaction",
-                  "beta-features/signers/ethers-v6/sign-typed-data"
-                ]
-              },
-              {
-                "group": "Sui",
-                "pages": [
-                  "beta-features/signers/sui/getting-started",
-                  "beta-features/signers/sui/sign-personal-message",
-                  "beta-features/signers/sui/sign-transaction-block"
-                ]
-              }
-            ]
-          }
         ]
       }
     ],

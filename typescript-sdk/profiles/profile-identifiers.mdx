@@ -1,0 +1,110 @@
+---
+title: "Identifiers"
+---
+### What is a Profile Identifier?
+A Profile Identifier is information you want to store about the user. Typically, this will be an external wallet address 
+or a social account.
+
+Our platform caters to an extensive array of identifier types, facilitating both Custom Identifiers and External Wallet connections. With Custom Identifiers, users can assign distinctive 'service' names, accommodating a variety of purposes including player IDs and external service integrations like Google or Discord. Moreover, we support direct association with identifiers from prominent platforms, including Apple, Facebook, Twitter, Email, and Phone. This enables a more enriched user profile by providing a wide range of identification options across different services and platforms.
+
+## Examples
+
+### Adding external wallet identifers to a profile
+
+Integrate wallet identifiers from our supported blockchain ecosystems directly into a user profile.
+
+
+#### EVM
+```TypeScript profileIdentifier.ts
+import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(apiKey);
+const profile = await sdk.getProfile(profileId); 
+const userInputAddress = '<PLACEHOLDER>';
+await profile.addEVMExternalWalletIdentifier(
+    userInputAddress
+);
+```
+
+#### SOL
+
+```ts
+await profile.addSOLExternalWalletIdentifier(
+    userInputAddress
+);
+```
+#### SUI
+```ts
+await profile.addSUIExternalWalletIdentifier(
+    userInputAddress
+);
+```
+### Adding Specific Identifiers 
+
+Easily attach identifiers from popular services to enhance user profile information.
+
+#### Discord
+
+```ts
+const identifier = <user-discord-id>;
+const stardustIdentifier = await profile.addDiscordIdentifier(identifier);
+```
+
+#### Apple
+
+```ts
+const identifier = <user-apple-id>;
+const stardustIdentifier = await profile.addAppleIdentifier(identifier);
+```
+
+#### Google
+
+```ts
+const identifier = <user-google-id>;
+const stardustIdentifier = await profile.addGoogleIdentifier(identifier);
+```
+
+#### Facebook
+
+```ts
+const identifier = <user-facebook-id>;
+const stardustIdentifier = await profile.addFacebookIdentifier(identifier);
+```
+
+#### Twitter
+
+```ts
+const identifier = <user-twitter-id>;
+const stardustIdentifier = await profile.addTwitterIdentifier(identifier);
+```
+
+#### Email
+
+```ts
+const identifier = <user-email-id>;
+const stardustIdentifier = await profile.addEmailIdentifier(identifier);
+```
+
+#### Phone
+
+```ts
+const identifier = <user-phone-id>;
+const stardustIdentifier = await profile.addPhoneIdentifier(identifier);
+```
+
+### Adding custom identifers to a profile
+
+Custom identifiers offer the flexibility to incorporate unique identifiers, tagged with a 'service' name, enhancing profile customization and integration capabilities.
+
+```TypeScript profileIdentifier.ts
+import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(apiKey);
+const profile = await sdk.getProfile(profileId); 
+const customServiceName = '<CUSTOM_SERVICE_NAME>';
+const customId = '<PLACEHOLDER>';
+await profile.addCustomIdentifier(customServiceName, customId);
+```
+

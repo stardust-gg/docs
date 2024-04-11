@@ -1,0 +1,39 @@
+---
+title: "Overview"
+---
+### What is a Profile?
+Profiles is a new feature for WaaS that help you understand your users and acquire similar players.
+
+Profile Identifiers give you a place to store information about your players.
+
+A Stardust Wallet is attached to every Profile.
+
+
+### Why use Profiles?
+
+<Card title="Understand who is playing your game" icon="address-card" iconType="duotone">
+See Profile specific analytics, like how many of your players have an external wallet connected.
+</Card>
+<Card title="Leverage the data to acquire similar users" icon="display-chart-up-circle-dollar" iconType="duotone">
+If you are also a Stardust UA client, you can leverage this data to help acquire more users.
+</Card>
+<Card title="Control wallets with player specific JWTs" icon="key" iconType="duotone">
+This opens up client side requests from our API, as a leaked JWT is not as dangerous as a leaked API key.
+</Card>
+
+## Examples
+
+
+### Default Profile Creation
+By default, creating a profile will allow you to access identifers such as external wallet linking, custom identifiers, and wallet functionality in one.
+
+```TypeScript profile.ts
+import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(apiKey);
+const application = await sdk.getApplication();
+const profile = await sdk.createProfile(application.id, 'My Profile Name'); 
+const profileId = profile.id;
+```
+<Warning>You must save this identifier as it is the single identifier for accessing all functionality of a profile</Warning>
