@@ -1,31 +1,27 @@
 ---
 title: "Overview"
 ---
-### What is a Profile?
-Profiles is a new feature for WaaS that help you understand your users and acquire similar players.
+### What is a Stardust Profile?
+Stardust Profiles allows game developers to do more than just have a scalable custodial wallet for every player, by also giving unique insights into who is playing your game and how valuable they are, and in future how to acquire more players like them to your game. 
 
-Profile Identifiers give you a place to store information about your players.
-
-A Stardust Wallet is attached to every Profile.
-
-
-### Why use Profiles?
+### Why are Profiles valuable?
 
 <Card title="Understand who is playing your game" icon="address-card" iconType="duotone">
-See Profile specific analytics, like how many of your players have an external wallet connected.
+See analytics of your players, their monetary value, whale score, and if they are a HODLer, trader, bot, or a VIP you'd like to craft a personalized experience for
 </Card>
-<Card title="Leverage the data to acquire similar users" icon="display-chart-up-circle-dollar" iconType="duotone">
-If you are also a Stardust UA client, you can leverage this data to help acquire more users.
+<Card title="Leverage this data to grow your game with Stardust UA" icon="display-chart-up-circle-dollar" iconType="duotone">
+By understanding who is playing your game, Stardust can help you acquire higher quality players for your game more cheaply and at scale
 </Card>
-<Card title="Control wallets with player specific JWTs" icon="key" iconType="duotone">
-This opens up client side requests from our API, as a leaked JWT is not as dangerous as a leaked API key.
+<Card title="Build player wallet controls securely into your game client" icon="key" iconType="duotone">
+With profiles, you can embed wallet control into a game client without leaking any secure information such as an API or server-based key
 </Card>
 
 ## Examples
 
 
-### Default Profile Creation
-By default, creating a profile will allow you to access identifers such as external wallet linking, custom identifiers, and wallet functionality in one.
+### Profile Creation
+
+Creating a profile allows game developers to easily interact with the Stardust custodial wallet, link external wallets, custom identifiers, and more. 
 
 ```TypeScript profile.ts
 import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';

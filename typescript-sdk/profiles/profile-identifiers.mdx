@@ -2,16 +2,15 @@
 title: "Identifiers"
 ---
 ### What is a Profile Identifier?
-A Profile Identifier is information you want to store about the user. Typically, this will be an external wallet address 
-or a social account.
+A Profile Identifier allows game developers to store information about their players directly on their profile. This can be a social account, or an external wallet address from any chain, EVM, Solana, Sui, and supporting both Aptos and BTC in the coming weeks. 
 
-Our platform caters to an extensive array of identifier types, facilitating both Custom Identifiers and External Wallet connections. With Custom Identifiers, users can assign distinctive 'service' names, accommodating a variety of purposes including player IDs and external service integrations like Google or Discord. Moreover, we support direct association with identifiers from prominent platforms, including Apple, Facebook, Twitter, Email, and Phone. This enables a more enriched user profile by providing a wide range of identification options across different services and platforms.
+Stardust Profiles can support an extensive array of identifier types, including Social and Custom Identifiers as well as External Wallet connections. 
 
-## Examples
+## How to add an identifier
 
-### Adding external wallet identifers to a profile
+### External wallets
 
-Integrate wallet identifiers from our supported blockchain ecosystems directly into a user profile.
+Adding an external wallet is an extremely valauble piece of infromation every game developer should collect. By connecting an external wallet to a Stardust Profile, a game developer can gain insights on the value of players in their game; and how to increase their engagement.
 
 
 #### EVM
@@ -21,76 +20,63 @@ import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';
 const STARDUST_API_KEY = 'your-api-key';
 const sdk = new StardustCustodialSDK(apiKey);
 const profile = await sdk.getProfile(profileId); 
-const userInputAddress = '<PLACEHOLDER>';
-await profile.addEVMExternalWalletIdentifier(
-    userInputAddress
-);
+const playerAddressEVM = '0x3B333e68ac5bdaB09cf1a402e07BBa3041AAf11D';
+await profile.addEVMExternalWalletIdentifier(playerAddressEVM);
 ```
 
-#### SOL
+#### Solana
 
 ```ts
-await profile.addSOLExternalWalletIdentifier(
-    userInputAddress
-);
+await profile.addSOLExternalWalletIdentifier(playerAddressSOL);
 ```
 #### SUI
 ```ts
-await profile.addSUIExternalWalletIdentifier(
-    userInputAddress
-);
+await profile.addSUIExternalWalletIdentifier(playerAddressSui);
 ```
-### Adding Specific Identifiers 
+### Attaching Social Identifiers 
 
-Easily attach identifiers from popular services to enhance user profile information.
+Easily attach identifiers from popular socials to enhance user profile information.
 
 #### Discord
 
 ```ts
-const identifier = <user-discord-id>;
-const stardustIdentifier = await profile.addDiscordIdentifier(identifier);
+const stardustIdentifier = await profile.addDiscordIdentifier(discordId);
 ```
 
 #### Apple
 
 ```ts
-const identifier = <user-apple-id>;
-const stardustIdentifier = await profile.addAppleIdentifier(identifier);
+const stardustIdentifier = await profile.addAppleIdentifier(appleId);
 ```
 
 #### Google
 
 ```ts
-const identifier = <user-google-id>;
-const stardustIdentifier = await profile.addGoogleIdentifier(identifier);
+const stardustIdentifier = await profile.addGoogleIdentifier(googleId);
 ```
 
 #### Facebook
 
 ```ts
-const identifier = <user-facebook-id>;
-const stardustIdentifier = await profile.addFacebookIdentifier(identifier);
+const stardustIdentifier = await profile.addFacebookIdentifier(facebookId);
 ```
 
 #### Twitter
 
 ```ts
-const identifier = <user-twitter-id>;
-const stardustIdentifier = await profile.addTwitterIdentifier(identifier);
+const stardustIdentifier = await profile.addTwitterIdentifier(twitterId);
 ```
 
 #### Email
 
 ```ts
-const identifier = <user-email-id>;
-const stardustIdentifier = await profile.addEmailIdentifier(identifier);
+const stardustIdentifier = await profile.addEmailIdentifier(email);
 ```
 
 #### Phone
 
 ```ts
-const identifier = <user-phone-id>;
-const stardustIdentifier = await profile.addPhoneIdentifier(identifier);
+const stardustIdentifier = await profile.addPhoneIdentifier(phoneNumber);
 ```
 
 ### Adding custom identifers to a profile
