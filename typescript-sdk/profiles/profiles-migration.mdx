@@ -1,15 +1,37 @@
 ---
-title: "Migration for Existing Integrations"
+title: "Optional Migration for for Existing Integrations"
 ---
 
-A wallet is now part of a profile. Previously, a wallet was created for every player like this:
+# Please Note:  Old versions of the SDK are supported. This is an **optional** upgrade for all existing clients
+
+### What is a Stardust Profile?
+Stardust Profiles allows game developers to do more than just have a scalable custodial wallet for every player, by also giving unique insights into who is playing your game and how valuable they are, and in future how to acquire more players like them to your game. 
+
+### Why are Profiles valuable?
+
+<Card title="Understand who is playing your game" icon="address-card" iconType="duotone">
+See analytics of your players, their monetary value, whale score, and if they are a HODLer, trader, bot, or a VIP you'd like to craft a personalized experience for
+</Card>
+<Card title="Leverage this data to grow your game with Stardust UA" icon="display-chart-up-circle-dollar" iconType="duotone">
+By understanding who is playing your game, Stardust can help you acquire higher quality players for your game more cheaply and at scale
+</Card>
+<Card title="Build player wallet controls securely into your game client" icon="key" iconType="duotone">
+With profiles, you can optionally embed wallet control into a game client without leaking any secure information such as an API or server-based key
+</Card>
+
+Wallets are no longer a top-level object, but instead contained within a profile
+
+### What the existing integration currently looks like 
+
 ``` typescript ts
 // Get Wallet
 const wallet: StardustWallet = await sdk.getWallet(walletId);
 
-// Get V5 Signer
+// Get Ethers V5 Signer
 const signer = wallet.ethers.v5.getSigner().connect(provider);
 ```
+
+### What the new integration will look like 
 
 Now, you will access the Wallet from within the Profile:
 ``` typescript ts
@@ -17,13 +39,21 @@ Now, you will access the Wallet from within the Profile:
 const profile = await sdk.getProfile(profileId);
 const { wallet } = profile;
 
-// Get V5 Signer
+// Get Ethers V5 Signer
 const signer = wallet.ethers.v5.getSigner().connect(provider);
 ```
 
-And Profile Identifiers can be added to the profile, detailing the player:
-``` typescript ts
-await profile.addIdentifier(StardustProfileIdentifierService.Google, userInputGoogleId);
-```
+### To get the full value of profiles, check out profiles identifiers and the overview page to get started creating profiles and adding identifiers
 
-The wallet methods will continue to work, but to add identifiers the Profile must be retrieved.
+<Card title="Click on me" icon="link" href="">
+  This is how you use a card with an icon and a link. Clicking on this card
+  brings you to the Card Group page.
+</Card>
+
+<Card title="Profiles Overview" icon="address-card" iconType="duotone">
+See analytics of your players, their monetary value, whale score, and if they are a HODLer, trader, bot, or a VIP you'd like to craft a personalized experience for
+</Card>
+
+<Card title="Profile Identifiers" icon="display-chart-up-circle-dollar" iconType="duotone href="docs-waas.stardust.gg/typescript-sdk/profiles/profile-identifiers">
+</Card>
+
