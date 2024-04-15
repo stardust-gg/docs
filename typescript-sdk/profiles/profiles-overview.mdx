@@ -27,7 +27,7 @@ Creating a profile allows game developers to easily interact with the Stardust c
 import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';
 
 const STARDUST_API_KEY = 'your-api-key';
-const sdk = new StardustCustodialSDK(apiKey);
+const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
 const application = await sdk.getApplication();
 const profile = await sdk.createProfile(application.id, 'My Profile Name'); 
 const profileId = profile.id;
