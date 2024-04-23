@@ -112,6 +112,12 @@
           ]
       },
       {
+        "group": "Guides",
+        "pages": [
+          "managed-migration"
+        ]
+      },
+      {
         "group": "Application Endpoints",
         "pages": [
           "api-reference/application-endpoints/list-applications",
