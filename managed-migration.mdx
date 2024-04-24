@@ -10,29 +10,21 @@ Get started by creating an app and up to 100 free wallets in the [WaaS Dashboard
 
 ## Migration Steps:
 
-1. Create smart contracts for each of the collections you will be migrating
-2. Deploy the smart contracts to your chosen EVM, Solana, or Sui blockchain
-3. Create Profiles for your existing players
-4. Mint copies of your existing assets to the WaaS wallets
-5. Integrate WaaS into your game's asset and transaction logic
+1. Manage smart contracts for each of the collections you will be migrating
+2. Create Profiles for your existing players
+3. Integrate WaaS into your game's asset and transaction logic
 
-## 1. Create Smart Contracts
+## 1. Manage Smart Contracts
 
-In the Stardust Managed API product, all blockchain assets were minted under Stardust-owned smart contracts. With the deprecation of the Managed API, these smart contracts and their assets will no longer be accessible.
+It is important to identify the assets and functionality that are essential to keep in your game. In the Stardust Managed API product, all blockchain assets were minted under Stardust-owned smart contracts. 
 
-It is important to identify the assets and functionality that are essential to keep in your game. 
+There are two options to maintaining functionality of these contracts and their assets.
 
-Keeping existing assets in your game will require developing and managing new smart contracts. 
+a.) Stardust can transfer ownership authority of the wallets over to you. In this case, you would not need to re-deploy the contracts or re-mint the assets. You can simply transfer the assets to the WaaS wallets. If you are interested in this option, please reach out to support@stardust.gg.
 
-These new, self-managed contracts will then mint new copies of these assets to the blockchain. It is recommended to retain the id of the old asset under the new smart contract.
+b.) Re-create and redeploy the contracts to your blockchain(s) of choice. Once your smart contracts have been deployed and profiles have been created for each of your players, you can then begin to mint copies of the old assets into the new WaaS wallets. You will then ensure that the assets are held within the new wallets. 
 
-## 2. Deploy Smart Contracts
-
-Once your smart contracts have been created, you will then deploy them to your blockchain(s) of choice. 
-
-You can choose any of the chains supported by WaaS - EVM, Solana, Sui.
-
-## 3. Create Profiles
+## 2. Create Profiles
 
 In the Stardust Managed API product, you would create a player object that included an attached wallet. In the WaaS product, you will create [Profiles](/typescript-sdk/profiles/profiles-overview). These profiles will include a wallet with addresses for EVM, Solana, and Sui chains. You are able to use one profile and wallet across any supported chain.
 
@@ -40,15 +32,7 @@ You will create profiles for each of your existing players. You will need to sto
 
 You can choose to use [profile identifiers](/typescript-sdk/profiles/profile-identifiers) to map back to the old `playerId`.
 
-## 4. Migrating Assets
 
-Once your smart contracts have been deployed and profiles have been created for each of your players, you can then begin to mint copies of the old assets into the new WaaS wallets. This will require some work to develop a migration tool that best fits your existing Managed integration.
+## 3. Integrate SDK
 
-The essential step is to interact with your smart contracts to mint the asset copies to the new profile wallets. You will then ensure that the assets are held within the new wallets. 
-
-
-## 5. Integrate SDK
-
-Update your game's asset management and transaction logic to leverage Stardust Wallets as a Service for handling digital assets and transactions.
-
-Once your assets are in WaaS wallets and your game logic has been updated, you can choose to burn the old assets using the Managed API.
+Update your game's asset management and transaction logic to leverage Stardust Wallets as a Service for handling digital assets and signing for transactions.
