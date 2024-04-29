@@ -1,0 +1,14 @@
+### Profile Creation
+
+Creating a profile allows game developers to easily interact with the Stardust custodial wallet, link external wallets, custom identifiers, and more. 
+
+```TypeScript profile.ts
+import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';
+
+const STARDUST_API_KEY = 'your-api-key';
+const sdk = new StardustCustodialSDK(STARDUST_API_KEY);
+const application = await sdk.getApplication();
+const profile = await sdk.createProfile(application.id, 'My Profile Name'); 
+const profileId = profile.id;
+```
+<Warning>You must save this identifier as it is the single identifier for accessing all functionality of a profile</Warning>
