@@ -115,8 +115,8 @@
       {
         "group": "Guides",
         "pages": [
-          "./guides/managed-migration",
-          "./guides/sign-and-send-an-evm-transction"
+          "guides/managed-migration",
+          "guides/sign-and-send-an-evm-transction"
         ]
       },
       {
