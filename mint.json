@@ -107,6 +107,13 @@
                   "pages": [
                     "typescript-sdk/signers/sol/getting-started"
                   ]
+                },
+                {
+                  "group": "Aptos",
+                  "pages": [
+                    "typescript-sdk/signers/aptos/getting-started",
+                    "typescript-sdk/signers/aptos/sign-send-transaction"
+                  ]
                 }
               ]
             }
