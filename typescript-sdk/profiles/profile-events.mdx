@@ -1,0 +1,27 @@
+---
+title: "Events"
+---
+
+### What is a Stardust Profile Event?
+
+Profile Events allow you to track various interactions and actions within a user profile. This can be used to monitor user interactions, transactions, and more, providing valuable insights into user behavior and engagement.
+
+### Adding an IP event 
+
+To track the IP address of a user, you can use the following code snippet. This will log either an IPv4 or IPv6 address associated with the user profile:
+
+```TypeScript event.ts
+await profile.addIp(<ipv4 or ipv6>);
+```
+
+### Adding a purchaseable event 
+To track a purchasable item associated with a user profile, you can use the following code snippet. This will log a record of the item with its associated details:
+```TypeScript event.ts
+const item = {
+    id: '12345',
+    name: 'Premium Subscription',
+    price: '9.99'
+};
+await profile.addPurchaseable(item);
+```
+<Warning>This purchaseable is limited to a depth of 1, if you wish to store deeper properties, we recommend flattening or encoding into a json string</Warning>

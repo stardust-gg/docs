@@ -55,6 +55,7 @@
             {
               "group": "Profiles",
               "pages": [
+                "typescript-sdk/profiles/profile-events",
                 "typescript-sdk/profiles/profiles-overview",
                 "typescript-sdk/profiles/profiles-creation",
                 "typescript-sdk/profiles/profiles-identifiers",
