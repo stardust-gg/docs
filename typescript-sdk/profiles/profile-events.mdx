@@ -11,7 +11,7 @@ Profile Events allow you to track various interactions and actions within a user
 To track the IP address of a user, you can use the following code snippet. This will log either an IPv4 or IPv6 address associated with the user profile:
 
 ```TypeScript event.ts
-await profile.addIp(<ipv4 or ipv6>);
+await profile.events.addIp(<ipv4 or ipv6>);
 ```
 
 ### Adding a purchaseable event 
@@ -22,6 +22,6 @@ const item = {
     name: 'Premium Subscription',
     price: '9.99'
 };
-await profile.addPurchaseable(item);
+await profile.events.addPurchaseable(item);
 ```
-<Warning>This purchaseable is limited to a depth of 1, if you wish to store deeper properties, we recommend flattening or encoding into a json string</Warning>
+<Warning>This purchaseable object is limited to a depth of 1, if you wish to store deeper properties, we recommend flattening or encoding into a json string</Warning>
