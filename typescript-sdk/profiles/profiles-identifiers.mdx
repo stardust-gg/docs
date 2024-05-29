@@ -79,6 +79,24 @@ const stardustIdentifier = await profile.addEmailIdentifier(email);
 const stardustIdentifier = await profile.addPhoneIdentifier(phoneNumber);
 ```
 
+#### Twitch
+
+```ts
+const stardustIdentifier = await profile.addTwitchIdentifier(twitchId);
+```
+
+#### Steam 
+    
+```ts
+const stardustIdentifier = await profile.addSteamIdentifier(steamId);
+```
+
+#### Epic 
+    
+```ts
+const stardustIdentifier = await profile.addEpicIdentifier(epicId);
+```
+
 ### Adding custom identifers to a profile
 
 Custom identifiers offer the flexibility to incorporate unique identifiers, tagged with a 'service' name, enhancing profile customization and integration capabilities.
