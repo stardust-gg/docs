@@ -1,0 +1,107 @@
+---
+title: "Executing a trade on Uniswap V3 Protocol"
+---
+
+This will walk you through the process to interact with the Uniswap V3 protocol using the Stardust API/SDK and the `ethers` library. By following this example, you'll be able to create, sign, and send a transaction to interact with the Uniswap V3 protocol
+
+## Prerequisites
+
+- Node.js installed on your system
+- Stardust API key and wallet Id or profile Id
+- `dotenv`, `axios`, `ethers v6`, `@uniswap/v3-sdk`, and `@uniswap/sdk-core` libraries
+
+## Setup
+
+1. **Install Dependencies**
+
+   First, you need to install the required dependencies:
+
+   ```bash
+   npm install dotenv axios ethers @uniswap/v3-sdk @uniswap/sdk-core
+   ```
+
+2. **Create a `.env` File**
+
+   Create a `.env` file in your project root directory and add your Stardust API key and profile ID:
+
+   ```env
+   PROD_SYSTEM_STARDUST_API_KEY=your_stardust_api_key
+   PROD_SYSTEM_STARDUST_PROFILE_ID=your_stardust_profile_id
+   ```
+
+## Code Example
+
+### 1. Import Libraries and Configure Environment
+
+First, import the necessary libraries and configure your environment using the .env file:
+
+```javascript
+import dotenv from 'dotenv';
+import axios from 'axios';
+import { ethers } from 'ethers';
+
+dotenv.config();
+```
+
+This code imports `dotenv`, `axios`, and `ethers` libraries and sets up the environment variables.
+
+### 2. Setup Configuration
+
+Next, set up the API key and profile ID from the environment variables:
+
+```javascript
+const apiKey = process.env.PROD_SYSTEM_STARDUST_API_KEY!;
+const profileId = process.env.PROD_SYSTEM_STARDUST_PROFILE_ID!;
+```
+
+Next, set up the RPC provider for the EVM network
+
+```javascript
+const rpcUrl = '<evm-rpc-network-here>';
+const rpcProvider = new ethers.JsonRpcProvider(rpcUrl);
+```
+
+### 3. Instantiate the Stardust Ethers V6 signer
+Initialize the Stardust SDK, get the wallet, and instantiate the signer:
+
+```javascript
+ // Initialize Stardust SDK
+const sdk = new StardustCustodialSDK(apiKey);
+
+// Get Wallet
+const profile = await sdk.getProfile(profileId);
+const { wallet } = profile;
+
+const evmAddress = await wallet.evm.getAddress();
+
+// Get V6 Signer
+const signer = wallet.ethers.v6.getSigner(rpcProvider);
+```
+
+### 4. Creating the Uniswap V3 transaction
+
+Refer to the [Uniswap SDK documentation](https://docs.uniswap.org/sdk/v3/guides/swaps/trading) for detailed steps on creating a transaction. Your transaction object should look something like this:
+
+```javascript
+const tx = {
+  data: methodParameters.calldata,
+  to: SWAP_ROUTER_ADDRESS,
+  value: methodParameters.value,
+  from: evmAddress,
+  maxFeePerGas: MAX_FEE_PER_GAS,
+  maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
+}
+```
+
+### 5. Send the transaction
+
+Finally, send the transaction using the Ethers V6 Signer, previous instantiated:
+
+```javascript
+const txResponse = await signer.sendTransaction(tx);
+console.log(`Sent tx object ${JSON.stringify(txResponse)}`);
+```
+
+## Conclusion
+
+You have successfully executed a trade on the Uniswap V3 protocol using the Stardust API/SDK and the ethers library. This example demonstrates how to create, sign, and send a transaction to interact with the Uniswap V3 protocol. You can now build more complex trading strategies and applications using this foundation.
