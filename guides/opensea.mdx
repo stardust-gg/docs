@@ -1,0 +1,79 @@
+---
+title: "Using a Stardust Wallet with OpenSea"
+---
+
+1. [Obtain an OpenSea API Key](https://docs.opensea.io/reference/api-keys)
+
+2. Add an OpenSea API Key to your local environment as `OPENSEA_API_KEY`
+
+<Warning>Your OpenSea API Key is a secret; it should not be committed/published as part of your app or shared via insecure channels.</Warning>
+
+3. [Install the OpenSea SDK](https://github.com/ProjectOpenSea/opensea-js/blob/main/developerDocs/quick-start.md)
+
+4. Create a listing on `OpenSeaSDK` with a stardust wallet:
+
+(Follow the [OpenSeaSDK Docs](https://github.com/ProjectOpenSea/opensea-js/blob/main/developerDocs/getting-started.md) to perform operations other than creating a listing.)
+
+```ts ethers v6
+
+import dotenv from 'dotenv';
+
+import { ethers, getDefaultProvider } from 'ethers_v6';
+import { StardustCustodialSDK } from '@stardust-gg/stardust-custodial-sdk';
+import { OpenSeaSDK, Chain } from "opensea-js";
+
+dotenv.config();
+
+// Configuration
+const stardustAPIKey = process.env.PROD_SYSTEM_STARDUST_API_KEY!;
+const profileId = process.env.PROD_SYSTEM_STARDUST_PROFILE_ID!;
+
+async function main() {
+    // Initialize Provider
+    const provider = getDefaultProvider('matic');
+
+    // Initialize Stardust SDK
+    const sdk = new StardustCustodialSDK(stardustAPIKey);
+
+    // Get Wallet
+    const profile = await sdk.getProfile(profileId);
+    const { wallet } = profile;
+
+    // Get V6 Signer
+    const signer: ethers.Signer & {address?: string} = wallet.ethers.v6.getSigner(provider);
+
+    //! OpenSea SDK expects signer to have address as a property
+    signer.address = await signer.getAddress();
+
+	// Instantiate OpenSeaSDK with a stardust signer
+	const openseaSDK = new OpenSeaSDK(signer, {
+		chain: Chain.Polygon,
+		apiKey: process.env.OPENSEA_API_KEY,
+	});
+
+	// Dummy values, replace with actual values.
+	const tokenId = '1';
+	const tokenAddress = '0x0Eccb65C249c019289505093F28555e8339E1e64';
+	const accountAddress = '0xd6dCA30fd4061e16683B62ac21c1c69734eE2eB3';
+
+	// Expire this auction one day from now.
+	// Note that we convert from the JavaScript timestamp (milliseconds) to seconds:
+	const expirationTime = Math.round(Date.now() / 1000 + 60 * 60 * 24);
+
+	const listing = await openseaSDK.createListing({
+	  asset: {
+	    tokenId,
+	    tokenAddress,
+	  },
+	  accountAddress,
+	  startAmount: 3,
+	  expirationTime,
+	});
+
+	console.log(`Successfully created OpenSea listing: ${listing}`)
+}
+
+main();
+
+```
+

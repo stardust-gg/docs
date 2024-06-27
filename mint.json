@@ -125,7 +125,8 @@
         "pages": [
           "guides/managed-migration",
           "guides/sign-and-send-an-evm-transction",
-          "guides/interacting-with-uniswap-V3-protocol"
+          "guides/interacting-with-uniswap-V3-protocol",
+          "guides/opensea"
         ]
       },
       {
