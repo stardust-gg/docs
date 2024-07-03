@@ -44,7 +44,8 @@
       {
         "group": "Start Here",
         "pages": [
-          "product-overview"
+          "start-here/product-overview",
+          "start-here/getting-started-with-stardust"
         ]
       },
       {
