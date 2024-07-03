@@ -49,6 +49,13 @@
         ]
       },
       {
+        "group": "Growth",
+        "pages": [
+          "growth/profiles-overview",
+          "growth/insights"
+        ]
+      },
+      {
         "group": "Typescript SDK",
         "pages": [
             "typescript-sdk/getting-started",
